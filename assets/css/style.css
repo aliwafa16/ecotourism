@@ -1,0 +1,41 @@
+.add_button{
+    background-color: #019267;
+    color: white;
+}
+
+.add_button:hover{
+    color:#B4C6A6;
+}
+
+.detail_button{
+    background-color: #FF8C32;
+    color: white;
+}
+
+.edit_button{
+    background-color: #00AFC1;
+    color: white;
+}
+
+.delete_button{
+    background-color: #FC4F4F;
+    color: white;
+}
+
+.readmore_button{
+    background-color: #516BEB;
+    color: white;
+}
+
+.sidebar-item:hover{
+background-color:  #019267 !important;
+border-radius: 20px;
+}
+
+.sidebar-item a:hover{
+    color: white !important;
+}
+
+.sidebar-item:checked{
+    background-color: blue !important;
+}
