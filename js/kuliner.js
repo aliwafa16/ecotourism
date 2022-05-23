@@ -9,7 +9,7 @@ $(document).ready(function () {
     processing: true,
     ajax: {
       type: "GET",
-      url: "http://localhost:8000/wisata/find?kategori=2&kategori=3",
+      url: "http://localhost:8000/kuliner",
       data: function (d) {
         no = 0;
       },
@@ -26,44 +26,44 @@ $(document).ready(function () {
       },
       {
         render: function (data, type, full, meta) {
-          return full.nama_wisata
+          return full.nama_kuliner
         }
       },
       {
         render: function (data, type, full, meta) {
           var num_chart = 20;
-            var length = full.deskripsi.length;
+            var length = full.deskripsi_kuliner.length;
             if (length > num_chart) {
-                var link = `<a href="javascript:;" onclick="DetailJudul('${full.id}')"><span class="badge badge-info"> Read More...</span></a>`;
-                a = full.deskripsi.substr(0, num_chart);
-                full.deskripsi = a+' ... '+link;
+                var link = `<a href="javascript:;" onclick="DetailJudul('${full.id}')"><span class="badge badge-info readmore_button">selengkapnya</span></a>`;
+                a = full.deskripsi_kuliner.substr(0, num_chart);
+                full.deskripsi_kuliner = a+' ... '+link;
             }else{
-                full.deskripsi.substr(0, num_chart);
+                full.deskripsi_kuliner.substr(0, num_chart);
             }
-            return full.deskripsi == null ? '-' : full.deskripsi;
+            return full.deskripsi_kuliner == null ? '-' : full.deskripsi_kuliner;
         }
       },
       {
         render: function (data, type, full, meta) {
           var num_chart = 20;
-            var length = full.alamat.length;
+            var length = full.alamat_kuliner.length;
             if (length > num_chart) {
-                var link = `<a href="javascript:;" onclick="DetailJudul('${full.id}')"><span class="badge badge-info"> Read More...</span></a>`;
-                a = full.alamat.substr(0, num_chart);
-                full.alamat = a+' ... '+link;
+                var link = `<a href="javascript:;" onclick="DetailJudul('${full.id}')"><span class="badge badge-info readmore_button">selengkapnya</span></a>`;
+                a = full.alamat_kuliner.substr(0, num_chart);
+                full.alamat_kuliner = a+' ... '+link;
             }else{
-                full.alamat.substr(0, num_chart);
+                full.alamat_kuliner.substr(0, num_chart);
             }
-            return full.alamat == null ? '-' : full.alamat;
+            return full.alamat_kuliner == null ? '-' : full.alamat_kuliner;
         }
       },
       {
         render: function (data, type, full, meta) {
           return `<div class="row">
                       <div class="col-md-12">
-                          <a href="${base_url}Anggota/detailAnggota/${full.id_anggota}" target="_blank" type="button" class="btn btn-secondary btn-sm"><i class="fa fa-info"></i></a>
-                          <button onclick="edit_anggota(${full.id_anggota})" type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
-                          <button onclick="hapus_anggota(${full.id_anggota})" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                          <button type="button" onclick="detail_wisata('${full.id_kuliner}')" target="_blank" class="btn detail_button btn-sm"><i class="fa fa-info"></i></button>
+                          <button onclick="edit_anggota()" type="button" class="btn edit_button btn-sm"><i class="fa fa-edit"></i></button>
+                          <button onclick="hapus_anggota()" type="button" class="btn delete_button btn-sm"><i class="fa fa-trash"></i></button>
                       </div>
                   </div>`
         }

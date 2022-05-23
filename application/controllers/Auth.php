@@ -20,13 +20,21 @@ class Auth extends CI_Controller{
         $status = [];
 
         $status = [
-            'id_user' => $this->session->userdata('id'),
-            'id_role' => $this->session->userdata('id_role'),
+            'id_user' => $this->session->userdata('id_pengguna'),
+            'id_role' => $this->session->userdata('role_id'),
             'is_logged' => true,
         ];
 
-        if($data['id_role']==2){
-            $status['id_wisata'] =  $this->session->userdata('wisata')['id'];
+        if($data['role_id']==2){
+            if($data['wisata']['kategori_pariwisata_id']==35){
+                $status['id_wisata'] =  $this->session->userdata('wisata')['id_wisata'];
+            }else if($data['wisata']['kategori_pariwisata_id']==36){
+                $status['id_wisata'] =  $this->session->userdata('wisata')['id_kuliner'];
+            }else if($data['wisata']['kategori_pariwisata_id']==38){
+                $status['id_wisata'] =  $this->session->userdata('wisata')['id_penginapan'];
+            }else if($data['wisata']['kategori_pariwisata_id']==39){
+                $status['id_wisata'] =  $this->session->userdata('wisata')['id_oleh_oleh'];
+            }
         }
 
         echo json_encode($status);

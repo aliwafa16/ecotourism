@@ -1,12 +1,12 @@
 $('#btn_login').on('click', function () {
     $('#form_login').validate({
         rules: {
-            username: 'required',
+            email: 'required',
             password:'required'
         },
         messages: {
-            username: {
-                required : 'Username harus diisi !'
+            email: {
+                required : 'Email harus diisi !'
             },
             password: {
                 required : 'password harus diisi !'
@@ -20,12 +20,12 @@ $('#btn_login').on('click', function () {
 
 function submitIsClick(forms) {
     let data = {
-        nama: $('#username').val(),
+        email: $('#email').val(),
         password : $('#password').val()
     }
     // console.log(data)
     $.ajax({
-        url: 'http://localhost:8000/auth/sign-in/',
+        url: 'http://localhost:8000/auth',
         type: 'POST',
         dataType: 'JSON',
         data: data,
@@ -36,18 +36,42 @@ function submitIsClick(forms) {
                 success(data.message)
                 let datas = data.data
 
-                if (datas.id_role == 2) {
+                if(datas.role_id==2){
                     $.ajax({
-                        url: 'http://localhost:8000/wisata/find?id=' + datas.id_wisata,
+                        url: 'http://localhost:8000/pariwisata/search?pengguna_id=' + datas.id_pengguna,
                         type: 'GET',
-                        success: function (wisata) {
-                            datas.wisata = wisata.data[0]
+                        success: function (pariwisata) {
+                            let kategori = pariwisata.data[0]
+                            if(kategori.id_kategori_pariwisata == 35){
+                                datas.wisata = kategori.wisata[0]
+                            }else if(kategori.id_kategori_pariwisata == 36){
+                                datas.wisata = kategori.kuliner[0]
+                            }else if(kategori.id_kategori_pariwisata == 38){
+                                datas.wisata = kategori.penginapan[0]
+                            }else if(kategori.id_kategori_pariwisata == 39){
+                                datas.wisata = kategori.oleh_oleh[0]
+                            }
+
                             verify(datas)
                         }
                     })
-                } else {
-                verify(datas)    
+                }else{
+
+                    verify(datas)
                 }
+
+                // if (datas.role_id == 2) {
+                //     $.ajax({
+                //         url: 'http://localhost:8000/pariwisata/search?pengguna_id=' + datas.id_pengguna,
+                //         type: 'GET',
+                //         success: function (wisata) {
+                //             datas.wisata = wisata.data[0]
+                //             verify(datas)
+                //         }
+                //     })
+                // } else {
+                // verify(datas)    
+                // }
             }
         }
     })
@@ -69,7 +93,7 @@ function verify(data) {
 
 function error(params) {
     Swal.fire({
-  icon: 'error',
+icon: 'error',
   title: 'Oops...',
   text: ''+params,
 })
@@ -77,11 +101,9 @@ function error(params) {
 
 function success(params) {
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: ''+params,
         showConfirmButton: false,
         timer: 1500,
-        width: '15rem'
     })
 }

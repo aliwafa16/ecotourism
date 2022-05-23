@@ -33,11 +33,11 @@
 </head>
 
 <body>
-    <script>
-        const base_url = `<?= base_url() ?>`
-        const id_role = `<?= $this->session->userdata('id_role') ?>`
-        const id_wisata = `<?= $this->session->userdata('wisata')['id'] ?>`
-    </script>
+<script>
+        const base_url = `<?= base_url(); ?>`
+        const role_id = `<?= $this->session->userdata('role_id'); ?>`
+        const id_pariwisata = `<?= $this->session->userdata('id_wisata'); ?>`
+</script>
 
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

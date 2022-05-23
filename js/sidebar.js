@@ -1,6 +1,7 @@
 $(document).ready(function () {
+    console.log(role_id)
     $.ajax({
-        url: 'http://localhost:8000/access/' + id_role,
+        url: 'http://localhost:8000/access/' + role_id,
         type: 'GET',
         dataType: 'JSON',
         success: function (menus) {

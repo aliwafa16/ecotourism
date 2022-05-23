@@ -34,8 +34,8 @@
                         <h3 class="mb-4 text-center">Selamat datang</h3>
                         <form action="" class="signin-form" enctype="multipart/form-data" id="form_login">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" required id="username" name="username" autocomplete="off">
-                                <p class="text-danger username_error"></p>
+                                <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
+                                <p class="text-danger email_error"></p>
                             </div>
                             <div class="form-group">
                                 <input id="password" name="password" type="password" class="form-control" placeholder="Password" required autocomplete="off">
