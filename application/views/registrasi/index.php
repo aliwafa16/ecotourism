@@ -29,24 +29,38 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-5">
                     <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Selamat datang</h3>
-                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_login">
+                        <h3 class="mb-4 text-center">Daftar Pengelola Ecotourism</h3>
+                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_registasi">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nama Pengguna" required id="username" name="username" autocomplete="off">
+                                <p class="text-danger username_error"></p>
+                            </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
                                 <p class="text-danger email_error"></p>
                             </div>
-                            <div class="form-group">
-                                <input id="password" name="password" type="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
-                                <p class="text-danger password_error"></p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input id="password" name="password" type="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
+                                        <p class="text-danger password_error"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input id="re_password" name="re_password" type="password" class="form-control" placeholder="Konfirmasi Kata Sandi" required autocomplete="off">
+                                        <p class="text-danger re_password_error"></p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" id="btn_login" class="form-control btn submit px-3" style="background-color: #0093AB;">Masuk</button>
+                                <button type="submit" id="btn_registrasi" class="form-control btn submit px-3" style="background-color: #0093AB;">Daftar</button>
                             </div>
                         </form>
                     </div>
-                    <p>Belum punya akun ? <a href="Auth/registrasi" style="color:aliceblue;">Daftar</a></p>
+                    <p>Sudah punya akun? <a href="<?= base_url() ?>" style="color:aliceblue;">Masuk</a></p>
                 </div>
             </div>
         </div>

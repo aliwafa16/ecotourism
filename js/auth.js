@@ -9,7 +9,7 @@ $('#btn_login').on('click', function () {
                 required : 'Email harus diisi !'
             },
             password: {
-                required : 'password harus diisi !'
+                required : 'Kata sandi harus diisi !'
             }
         },
         submitHandler: function (forms) {
@@ -17,6 +17,73 @@ $('#btn_login').on('click', function () {
         }
     })
 })
+
+
+$('#btn_registrasi').on('click', function () {
+    $('#form_registasi').validate({
+        rules: {
+            email: {
+                required: true,
+                email:true
+            },
+            password: {
+                required: true,
+                minlength : 5,
+            },
+            username: 'required',
+            re_password: {
+                required: true,
+                minlength: 5,
+                equalTo : '#password'
+            }
+        },
+        messages: {
+            email: {
+                required: 'Email harus diisi !',
+                email : 'Format email salah !'
+            },
+            password: {
+                required: 'Kata sandi harus diisi !',
+                minlength : 'Kata sandi minimal 5 karakter'
+            },
+            username: {
+                required: 'Username harus diisi !'
+            },
+            re_password: {
+                required: 'Konfirmasi kata sandi harus diisi !',
+                minlength: 'Kata sandi minimal 5 karakter',
+                equalTo : 'Konfirmasi kata sandi salah !'
+            }
+        },
+        submitHandler: function (forms) {
+            submitRegistrationIsClick(forms)
+        }
+    })
+})
+
+
+function submitRegistrationIsClick(forms) {
+    let data = {
+        email: $('#email').val(),
+        password: $('#password').val(),
+        username: $('#username').val(),
+        pengelola : true
+    }
+
+    $.ajax({
+        url: 'http://localhost:8000/auth/registration',
+        type: 'POST',
+        dataType: 'JSON',
+        data: data,
+        success: function (results) {
+            if (results.code !== 200) {
+                error(results.message)
+            } else {
+                success_registration(results.message);
+            }
+        }
+    })
+}
 
 function submitIsClick(forms) {
     let data = {
@@ -97,6 +164,19 @@ icon: 'error',
   title: 'Oops...',
   text: ''+params,
 })
+}
+
+function success_registration(params) {
+    Swal.fire({
+        icon: 'success',
+        title: ''+params,
+        text: 'Data akan divalidasi oleh adminstrator utama, silahkan cek email',
+        showConfirmButton: true,
+    }).then(function (isConfirm) {
+        if (isConfirm) {
+            location.href = base_url
+        }
+    })
 }
 
 function success(params) {

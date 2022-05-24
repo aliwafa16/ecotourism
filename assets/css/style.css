@@ -12,6 +12,11 @@
     color: white;
 }
 
+.accept_button{
+    background-color: #019267;
+    color: white;
+}
+
 .edit_button{
     background-color: #00AFC1;
     color: white;

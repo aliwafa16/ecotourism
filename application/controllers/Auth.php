@@ -40,6 +40,11 @@ class Auth extends CI_Controller{
         echo json_encode($status);
     }
 
+    public function registrasi()
+    {
+        $this->load->view('registrasi/index');
+    }
+
     public function logout(){
         $this->session->sess_destroy();
         redirect(base_url());
