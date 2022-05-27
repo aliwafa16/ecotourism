@@ -20,13 +20,12 @@ class Wisata extends CI_Controller
 
     public function detail(){
         $data['page'] = $this->uri->segment(1);
-        $data['headline'] = 'Manajemen Wisata';
-        $data['table_name'] = 'Tabel Manajemen Wisata';
-        $data['wisata'] = json_encode($this->input->post());
-        // $this->load->view('templates/header');
-        // $this->load->view('templates/navbar');
-        // $this->load->view('templates/sidebar');
-        // $this->load->view('wisata/detail', $data);
-        // $this->load->view('templates/footer');
+        $data['headline'] = 'Detail Wisata';
+        $data['table_name'] = '';
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('wisata/detail', $data);
+        $this->load->view('templates/footer');
     }
 }

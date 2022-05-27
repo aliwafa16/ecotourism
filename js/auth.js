@@ -30,6 +30,10 @@ $('#btn_registrasi').on('click', function () {
                 required: true,
                 minlength : 5,
             },
+            no_telp:{
+                required:true,
+                minlength:12
+            },
             username: 'required',
             re_password: {
                 required: true,
@@ -49,6 +53,10 @@ $('#btn_registrasi').on('click', function () {
             username: {
                 required: 'Username harus diisi !'
             },
+            no_telp:{
+                required: 'Nomor telepon harus diisi !',
+                minlength:'Nomor telepon minimal 12 angka'
+            },
             re_password: {
                 required: 'Konfirmasi kata sandi harus diisi !',
                 minlength: 'Kata sandi minimal 5 karakter',
@@ -67,8 +75,11 @@ function submitRegistrationIsClick(forms) {
         email: $('#email').val(),
         password: $('#password').val(),
         username: $('#username').val(),
+        no_telp : $('#no_telp').val(),
         pengelola : true
     }
+
+    console.log(data)
 
     $.ajax({
         url: 'http://localhost:8000/auth/registration',
@@ -170,7 +181,7 @@ function success_registration(params) {
     Swal.fire({
         icon: 'success',
         title: ''+params,
-        text: 'Data akan divalidasi oleh adminstrator utama, silahkan cek email',
+        text: 'Silahkan cek mail, untuk memverifikasi akun email',
         showConfirmButton: true,
     }).then(function (isConfirm) {
         if (isConfirm) {

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="<?= base_url('assets/auth/') ?>css/style.css">
-
+    <link rel="stylesheet" href="<?= base_url('assets/css/') ?>style.css">
     <script src="<?= base_url('assets/js/') ?>jquery-3.6.0.min.js"></script>
 </head>
 
@@ -40,6 +40,10 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
                                 <p class="text-danger email_error"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nomor Telepon" required id="no_telp" name="no_telp" autocomplete="off">
+                                <p class="text-danger no_telp_error"></p>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">

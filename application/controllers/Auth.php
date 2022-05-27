@@ -45,9 +45,16 @@ class Auth extends CI_Controller{
         $this->load->view('registrasi/index');
     }
 
+    public function aktivasi()
+    {
+        $this->load->view('aktivasi/index');
+    }
+
     public function logout(){
         $this->session->sess_destroy();
         redirect(base_url());
     }
+
+
 
 }

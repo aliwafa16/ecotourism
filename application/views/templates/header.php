@@ -20,7 +20,7 @@
 
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/backend') ?>/dist/css/style.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/datatables/') ?>dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/') ?>style.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,11 +33,11 @@
 </head>
 
 <body>
-<script>
+    <script>
         const base_url = `<?= base_url(); ?>`
         const role_id = `<?= $this->session->userdata('role_id'); ?>`
         const id_pariwisata = `<?= $this->session->userdata('id_wisata'); ?>`
-</script>
+    </script>
 
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->

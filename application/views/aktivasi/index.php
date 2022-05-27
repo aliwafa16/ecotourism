@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="<?= base_url('assets/auth/') ?>css/style.css">
-    <link rel="stylesheet" href="<?= base_url('assets/css/') ?>style.css">
+
     <script src="<?= base_url('assets/js/') ?>jquery-3.6.0.min.js"></script>
 </head>
 
@@ -29,24 +29,8 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Selamat datang</h3>
-                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_login">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
-                                <p class="text-danger email_error"></p>
-                            </div>
-                            <div class="form-group">
-                                <input id="password" name="password" type="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
-                                <p class="text-danger password_error"></p>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" id="btn_login" class="form-control btn submit px-3" style="background-color: #0093AB;">Masuk</button>
-                            </div>
-                        </form>
-                    </div>
-                    <p>Belum punya akun ? <a href="Auth/registrasi" style="color:aliceblue;">Daftar</a></p>
+                <div class="col-md-8 col-lg-12">
+                    <h1 style="color:white; text-align:center" id="pesan"></h1>
                 </div>
             </div>
         </div>
@@ -60,6 +44,29 @@
     <script src="<?= base_url('assets/auth/') ?>js/main.js"></script>
     <script src="<?= base_url() ?>js/auth.js"></script>
     <script src="<?= base_url('assets/jquery-validation/dist/') ?>jquery.validate.js"></script>
+
+
+    <script>
+        $( document ).ready(function() {
+            const pathArray = window.location.pathname.split("/");
+            const token = pathArray[4]
+            if(!token){
+                location.href = base_url;
+            }else{
+                $.ajax({
+                    url:'http://localhost:8000/auth/verifikasi',
+                    data:{
+                        token
+                    },
+                    type:'POST',
+                    dataType : 'JSON',
+                    success: function(result){
+                        $('#pesan').text(result.message)
+                    }
+                })
+            }
+        });
+    </script>
 
 </body>
 
