@@ -31,30 +31,85 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <h1 class="d-inline"><i class="fas fa-campground text-success"></i> Kebun Raya Bogor</h1>
-                                        <h6 class="d-inline ps-2"><i class="fas fa-star text-warning"></i>(9.3)</h6>
-                                        <p style="text-align: justify;" class="mt-3">Kebun Raya Bogor atau Kebun Botani Bogor adalah sebuah kebun botani besar yang terletak di Kota Bogor, Indonesia. Luasnya mencapai 87 hektaree dan memiliki 15.000 jenis koleksi pohon dan tumbuhan. Saat ini Kebun Raya Bogor ramai dikunjungi sebagai tempat wisata, terutama hari Sabtu dan Minggu. Di sekitar Kebun Raya Bogor tersebar pusat-pusat keilmuan yaitu Herbarium Bogoriense, Museum Zoologi Bogor, dan PUSTAKA</p>
+                                        <div class="d-inline">
+                                            <h1 class="d-inline"><i class="fas fa-campground text-success"></i></h1>
+                                            <h1 class="d-inline" id="nama_wisata"></h1>
+                                        </div>
+                                        <div class="d-inline">
+                                            <h6 class="d-inline"><i class="fas fa-star text-warning"></i></h6>
+                                            <h6 class="d-inline" id="rating_wisata">(9.3)</h6>
+                                        </div>
+                                        <p style="text-align: justify;" class="mt-3" id="deskripsi_wisata"></p>
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <h3><i class="fas fa-server text-success"></i> Data wisata</h3>
-                                                <p><i class="fas fa-filter text-warning me-3"></i>Wisata Rekreasi</p>
-                                                <p><i class="fas fa-map-marked-alt text-info me-3"></i>Jl. Ir. H. Juanda No.13, Paledang, Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16122</p>
-                                                <p><i class="fas fa-map-pin text-danger me-3"></i>-6.5952939328208595, 106.80004007037071</p>
+                                                <div class="d-inline">
+                                                    <h3 class="d-inline"><i class="fas fa-server text-success"></i></h3>
+                                                    <h3 class="d-inline">Data wisata</h3>
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    <p class="d-inline"><i class="fas fa-filter text-warning me-3"></i></p>
+                                                    <p class="d-inline" id="kategori_wisata"></p>
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    <p class="d-inline"><i class=" fas fa-map-marked-alt text-info me-3"></i></p>
+                                                    <p class="d-inline" id="alamat_wisata"></p>
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    <p class="d-inline"><i class=" fas fa-map-pin text-danger me-3"></i></p>
+                                                    <p class="d-inline" id="latitude_longitude"></p>
+                                                </div>
+
+
                                             </div>
                                             <div class="col-md-7">
                                                 <h3><i class="fas fa-hashtag text-primary"></i> Sosial media</h3>
                                                 <div class="row justify-content-start">
                                                     <div class="col-md-6">
-                                                        <p><i class="fab fa-instagram text-danger me-1"></i>kebunraya_id</p>
-                                                        <p><i class="fab fa-facebook text-primary me-1"></i>kebunraya.id</p>
-                                                        <p><i class="fab fa-twitter text-info me-1"></i>kebunraya_id</p>
-                                                        <p><i class="fab fa-youtube text-danger me-1"></i>KebunRayaid21</p>
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fab fa-instagram text-danger me-1"></i></p>
+                                                            <p class="d-inline" id="instagram"></p>
+                                                        </div>
+
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fab fa-facebook text-primary me-1"></i></p>
+                                                            <p class="d-inline" id="facebook"></p>
+                                                        </div>
+
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fab fa-twitter text-info me-1"></i></p>
+                                                            <p class="d-inline" id="twitter"></p>
+                                                        </div>
+
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fab fa-youtube text-danger me-1"></i></p>
+                                                            <p class="d-inline" id="youtube"></p>
+                                                        </div>
+
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p><i class="fab fa-tiktok text-dark me-1"></i>KebunRayaid21</p>
-                                                        <p><i class="fas fa-globe text-success me-1"></i>KebunRayaid21</p>
-                                                        <p><i class="fas fa-envelope text-danger me-1"></i>KebunRayaid21</p>
-                                                        <p><i class="fas fa-phone-alt text-primary me-1"></i>+6285157554086</p>
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fab fa-tiktok text-dark me-1"></i></p>
+                                                            <p class="d-inline" id="tiktok"></p>
+                                                        </div>
+
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fas fa-globe text-success me-1"></i></p>
+                                                            <p class="d-inline" id="website"></p>
+                                                        </div>
+
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fas fa-envelope text-danger me-1"></i></p>
+                                                            <p class="d-inline" id="email"></p>
+                                                        </div>
+
+                                                        <div class="mt-2">
+                                                            <p class="d-inline"><i class="fas fa-phone-alt text-primary me-1"></i></p>
+                                                            <p class="d-inline" id="no_cs"></p>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,10 +170,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h3 class="mb-0 fw-bold"><i class="fas fa-calendar-alt text-success"></i> Jadwal Operasional</h3>
-                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="tambahWisata()"><i class="fa fa-plus"></i>Tambah data</button>
+                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addJadwal" onclick="tambahJadwal()"><i class="fa fa-plus"></i>Tambah data</button>
 
                                         <div class="table-responsive">
-                                            <table class="table table-hover" id="table_wisata" style="width:100%">
+                                            <table class="table table-hover" id="table_jadwal" style="width:100%">
                                                 <thead>
                                                     <tr class="text-center">
                                                         <th scope="col">No</th>
@@ -378,3 +433,61 @@
         <!-- End footer -->
         <!-- ============================================================== -->
         </div>
+        <script>
+            $(document).ready(function() {
+                if (localStorage.getItem("id_wisata") != null) {
+                    const id_wisata = localStorage.getItem("id_wisata")
+
+                    $('#table_jadwal').DataTable()
+                    $.ajax({
+                        url: 'http://localhost:8000/wisata/' + id_wisata,
+                        type: 'GET',
+                        dataType: 'JSON',
+                        success: function(results) {
+                            let wisata = results.data
+                            let kategori = wisata.kategori_wisata
+                            let urlInstagram =
+                                wisata.instagram != null ?
+                                new URL(wisata.instagram).pathname.slice(1) :
+                                "-";
+                            let urlFacebook =
+                                wisata.facebook != null ?
+                                new URL(wisata.facebook).pathname.slice(1) :
+                                "-";
+                            let urlYoutube =
+                                wisata.youtube != null ?
+                                new URL(wisata.youtube).pathname.slice(1) :
+                                '-';
+                            let urlTwitter =
+                                wisata.twitter != null ?
+                                new URL(wisata.twitter).pathname.slice(1) :
+                                '-';
+                            let urlTiktok =
+                                wisata.tiktok != null ?
+                                new URL(wisata.tiktok).pathname.slice(1) :
+                                '-';
+
+                            let no_cs = wisata.no_cs != null ? wisata.no_cs : '-';
+                            let website = wisata.website != null ? wisata.website : '-'
+
+                            $('#nama_wisata').text(wisata.nama_wisata);
+                            $('#deskripsi_wisata').text(wisata.deskripsi_wisata);
+                            $('#alamat_wisata').text(wisata.alamat_wisata)
+                            $('#latitude_longitude').text(wisata.latitude + ', ' + wisata.longitude)
+                            $('#instagram').text(urlInstagram);
+                            $('#facebook').text(urlFacebook);
+                            $('#twitter').text(urlTwitter);
+                            $('#youtube').text(urlYoutube);
+                            $('#tiktok').text(urlTiktok);
+                            $('#website').text(website)
+                            $('#email').text(wisata.email);
+                            $('#no_cs').text(no_cs)
+                            $('#kategori_wisata').text(kategori.kategori)
+
+                        }
+                    })
+                } else {
+                    location.href = base_url
+                }
+            })
+        </script>

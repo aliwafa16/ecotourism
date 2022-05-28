@@ -28,4 +28,5 @@ class Wisata extends CI_Controller
         $this->load->view('wisata/detail', $data);
         $this->load->view('templates/footer');
     }
+
 }

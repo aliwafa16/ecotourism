@@ -70,24 +70,8 @@ $(document).ready(function () {
 });
 
 function detail_wisata(id_wisata) {
-	$.ajax({
-		url: "http://localhost:8000/wisata/" + id_wisata,
-		type: "GET",
-		dataType: "JSON",
-		success: function (data) {
-			console.log(data);
-			// let wisata = data.data
-			// $.ajax({
-			//   url: base_url + 'wisata/detail',
-			//   data: wisata,
-			//   dataType: 'JSON',
-			//   type: 'POST',
-			//   success: function (params) {
-			//     console.log(params)
-			//   }
-			// })
-		},
-	});
+		localStorage.setItem("id_wisata", id_wisata);
+		location.href = base_url + "wisata/detail";
 }
 
 function tambahWisata() {
@@ -365,63 +349,6 @@ function edit_wisata(id) {
 		},
 	});
 }
-
-// $("#btn_editWisata").on("click", function (e) {
-// 	$("#form_wisata").validate({
-// 		rules: {
-// 			nama_wisata: {
-// 				required: true,
-// 			},
-// 			deskripsi_wisata: {
-// 				required: true,
-// 			},
-// 			alamat_wisata: {
-// 				required: true,
-// 			},
-// 			latitude: {
-// 				required: true,
-// 				number: true,
-// 			},
-// 			longitude: {
-// 				required: true,
-// 			},
-// 			email: {
-// 				email: true,
-// 			},
-// 			no_cs: {
-// 				minlength: 11,
-// 				number: true,
-// 			},
-// 		},
-// 		messages: {
-// 			nama_wisata: {
-// 				required: "Nama wisata harus diisi !",
-// 			},
-// 			deskripsi_wisata: {
-// 				required: "Deskripsi wisata harus diisi !",
-// 			},
-// 			alamat_wisata: {
-// 				required: "Alamat wisata harus diisi !",
-// 			},
-// 			latitude: {
-// 				required: "Latitude wisata harus diisi !",
-// 			},
-// 			longitude: {
-// 				required: "Longitude wisata harus diisi !",
-// 			},
-// 			email: {
-// 				email: "Format email salah !",
-// 			},
-// 			no_cs: {
-// 				minlength: "Nomor telepon minimal 11 karakter !",
-// 				number: "Format nomor telepon salah !",
-// 			},
-// 		},
-// 		submitHandler: function (form) {
-// 			submitIsClick({ edit: true });
-// 		},
-// 	});
-// });
 
 function hapus_wisata(id_wisata) {
 	Swal.fire({
