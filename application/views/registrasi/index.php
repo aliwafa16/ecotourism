@@ -37,10 +37,16 @@
                                 <input type="text" class="form-control" placeholder="Nama Pengguna" required id="username" name="username" autocomplete="off">
                                 <p class="text-danger username_error"></p>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
-                                <p class="text-danger email_error"></p>
+
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Email" id="email" name="email" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" id="btn_cekEmail" style="background-color: #0093AB; color:white" type="button" id="button-addon2">Cek email</button>
+                                </div>
                             </div>
+                            <label for="email" generated="true" class="error error-email"></label>
+                            <label for="email" generated="true" class="success-email"></label>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Nomor Telepon" required id="no_telp" name="no_telp" autocomplete="off">
                                 <p class="text-danger no_telp_error"></p>

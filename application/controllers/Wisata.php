@@ -18,6 +18,18 @@ class Wisata extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function tambah()
+    {
+        $data['page'] = $this->uri->segment(1);
+        $data['headline'] = 'Tambah Wisata';
+        $data['table_name'] = '';
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('wisata/tambah', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function detail(){
         $data['page'] = $this->uri->segment(1);
         $data['headline'] = 'Detail Wisata';
@@ -26,6 +38,18 @@ class Wisata extends CI_Controller
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
         $this->load->view('wisata/detail', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function edit()
+    {
+        $data['page'] = $this->uri->segment(1);
+        $data['headline'] = 'Edit Wisata';
+        $data['table_name'] = '';
+        $this->load->view('templates/header');
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('wisata/edit', $data);
         $this->load->view('templates/footer');
     }
 

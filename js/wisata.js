@@ -7,9 +7,14 @@ $(document).ready(function () {
 		initComplete: function (settings, json) {},
 		retrieve: true,
 		processing: true,
+		lengthMenu: [
+			[5, 10, 25, 50, -1],
+			[5, 10, 25, 50, "All"],
+		],
+
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/wisata/",
+			url: "http://localhost:8000/wisata/filter?status=1",
 			data: function (d) {
 				no = 0;
 			},
@@ -44,7 +49,7 @@ $(document).ready(function () {
 					}
 					return full.deskripsi_wisata == null ? "-" : full.deskripsi_wisata;
 				},
-				width: "44%",
+				width: "39%",
 			},
 			{
 				render: function (data, type, full, meta) {
@@ -54,15 +59,34 @@ $(document).ready(function () {
 			},
 			{
 				render: function (data, type, full, meta) {
-					return `<div class="row">
-                      <div class="col-md-12">
-                          <button type="button" onclick="detail_wisata('${full.id_wisata}')" target="_blank" class="btn detail_button btn-sm"><i class="fa fa-info"></i></button>
-                          <button onclick="edit_wisata('${full.id_wisata}')" type="button" class="btn edit_button btn-sm"><i class="fa fa-edit"></i></button>
-                          <button onclick="hapus_wisata('${full.id_wisata}')" type="button" class="btn delete_button btn-sm"><i class="fa fa-trash"></i></button>
-                      </div>
-                  </div>`;
+					return `<div class="row align-items-center">
+                    <div class="col-md-3 mt-2">
+                        <button type="button" onclick="detail_wisata('${full.id_wisata}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="edit_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi edit_button btn-sm"><i class="fa fa-edit"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="hapus_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi delete_button btn-sm"><i class="fa fa-trash"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="gambar_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi gambar_button btn-sm"><i class="fa fa-camera"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="tiket_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi tiket_button btn-sm"><i class="fa fa-ticket-alt"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="fasilitas_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi fasilitas_button btn-sm"><i class="fa fa-landmark"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="jadwal_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi jadwal_button btn-sm"><i class="fa fa-calendar-alt"></i></button>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <button onclick="item_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi item_button btn-sm"><i class="fa fa-th-list"></i></button>
+                    </div>
+                </div>`;
 				},
-				width: "10%",
+				width: "15%",
 				className: "text-center",
 			},
 		],
@@ -70,51 +94,112 @@ $(document).ready(function () {
 });
 
 function detail_wisata(id_wisata) {
-		localStorage.setItem("id_wisata", id_wisata);
-		location.href = base_url + "wisata/detail";
+	localStorage.setItem("id_wisata", id_wisata);
+	location.href = base_url + "wisata/detail";
 }
 
-function tambahWisata() {
-	tipe = "add";
-	$("#kategori_wisata").html("");
-	$("#pengguna_id").html("");
-	$("#form_wisata")[0].reset();
-
-	$("#tambahWisataModal").modal("show");
-
-	$.ajax({
-		url: "http://localhost:8000/kategori_wisata",
-		type: "GET",
-		dataType: "JSON",
-		success: function (result) {
-			let kategori_wisata = result.data;
-			console.log(kategori_wisata);
-
-			kategori_wisata.forEach((element) => {
-				$("#kategori_wisata").append(
-					`<option value="${element.id_kategori_wisata}">${element.kategori}</option>`
-				);
-			});
-		},
-	});
-
-	$.ajax({
-		url: "http://localhost:8000/pengguna/filter?role_id=2&status=1&verifikasi=1",
-		type: "GET",
-		dataType: "JSON",
-		success: function (result) {
-			$("#pengguna_id").append(
-				`<option value="0">--Belum ada akun pengguna--</option>`
-			);
-			let pengelola = result.data;
-			pengelola.forEach((element) => {
-				$("#pengguna_id").append(
-					`<option value="${element.id_pengguna}">${element.username}</option>`
-				);
-			});
-		},
-	});
+function edit_wisata(id_wisata) {
+	localStorage.setItem("id_wisata", id_wisata);
+	location.href = base_url + "wisata/edit";
 }
+
+function jadwal_wisata(id_wisata) {
+	$("#jadwalModal").modal("show");
+	$("#form_jadwal")[0].reset();
+	$(".wisata_id").val(id_wisata);
+}
+
+$("#submit_addJadwal").on("click", function (e) {
+	e.preventDefault();
+	let data = {
+		id_pariwisata: $(".wisata_id").val(),
+		hari: $("#hari").val(),
+		jam_buka: $("#jam_buka").val(),
+		jam_tutup: $("#jam_tutup").val(),
+		keterangan: $("#keterangan_jadwal").val(),
+	};
+
+	$.ajax({
+		url: "http://localhost:8000/jadwal",
+		data: data,
+		type: "POST",
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				error(result.message);
+			} else {
+				success("Data jadwal wisata berhasil ditambahkan");
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
+function fasilitas_wisata(id_wisata) {
+	$("#fasilitasModal").modal("show");
+	$("#form_fasilitas")[0].reset();
+	$(".wisata_id").val(id_wisata);
+}
+
+$("#submit_addFasilitas").on("click", function (e) {
+	e.preventDefault();
+	let data = {
+		id_pariwisata: $(".wisata_id").val(),
+		nama_fasilitas: $("#fasilitas").val(),
+		keterangan: $("#keterangan_fasilitas").val(),
+	};
+	$.ajax({
+		url: "http://localhost:8000/fasilitas",
+		data: data,
+		type: "POST",
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				error(result.message);
+			} else {
+				success("Data fasilitas wisata berhasil ditambahkan");
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
+function tiket_wisata(id_wisata) {
+	$("#tiketModal").modal("show");
+	$("#form_tiket")[0].reset();
+	$(".wisata_id").val(id_wisata);
+}
+
+$("#submit_addTiket").on("click", function (e) {
+	e.preventDefault();
+	let data = {
+		id_pariwisata: $(".wisata_id").val(),
+		tiket: $("#tiket").val(),
+		harga: $("#harga").val(),
+		keterangan: $("#keterangan_tiket").val(),
+	};
+
+	$.ajax({
+		url: "http://localhost:8000/tiket",
+		data: data,
+		type: "POST",
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				error(result.message);
+			} else {
+				success("Data tiket wisata berhasil ditambahkan");
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
 
 $("#btn_submitWisata").on("click", function (e) {
 	$("#form_wisata").validate({
@@ -173,6 +258,63 @@ $("#btn_submitWisata").on("click", function (e) {
 	});
 });
 
+$("#btn_editWisata").on("click", function (e) {
+	$("#form_wisata").validate({
+		rules: {
+			nama_wisata: {
+				required: true,
+			},
+			deskripsi_wisata: {
+				required: true,
+			},
+			alamat_wisata: {
+				required: true,
+			},
+			latitude: {
+				required: true,
+				number: true,
+			},
+			longitude: {
+				required: true,
+			},
+			email: {
+				email: true,
+			},
+			no_cs: {
+				minlength: 10,
+				number: true,
+			},
+		},
+		messages: {
+			nama_wisata: {
+				required: "Nama wisata harus diisi !",
+			},
+			deskripsi_wisata: {
+				required: "Deskripsi wisata harus diisi !",
+			},
+			alamat_wisata: {
+				required: "Alamat wisata harus diisi !",
+			},
+			latitude: {
+				required: "Latitude wisata harus diisi !",
+			},
+			longitude: {
+				required: "Longitude wisata harus diisi !",
+			},
+			email: {
+				email: "Format email salah !",
+			},
+			no_cs: {
+				minlength: "Nomor telepon minimal 10 karakter !",
+				number: "Format nomor telepon salah !",
+			},
+		},
+		submitHandler: function (form) {
+			editIsClick();
+		},
+	});
+});
+
 function submitIsClick() {
 	let email = $("#email").val();
 	let no_cs = $("#no_cs").val();
@@ -207,148 +349,81 @@ function submitIsClick() {
 	data.website = website == "" ? null : $("#website").val();
 	data.youtube =
 		youtube == "" ? null : "https://www.youtube.com/" + $("#youtube").val();
-	if (tipe == "add") {
-		data.status = role_id == 1 ? 1 : 0;
-		$.ajax({
-			url: "http://localhost:8000/wisata/",
-			data: data,
-			type: "POST",
-			dataType: "JSON",
-			success: function (result) {
-				if (result.code != 200) {
-					error(result.message);
-				} else {
-					success("Data wisata berhasil ditambahkan");
-					grid_wisata.ajax.reload();
-					$("#tambahWisataModal").modal("hide");
-				}
-			},
-		});
-	} else {
-		data.status = $("#status").val();
-		data.id_wisata = $("#id_wisata").val();
-		$.ajax({
-			url: "http://localhost:8000/wisata/",
-			data: data,
-			type: "PUT",
-			dataType: "JSON",
-			success: function (result) {
-				if (result.code != 200) {
-					error(result.message);
-				} else {
-					success("Data wisata berhasil diubah");
-					grid_wisata.ajax.reload();
-					$("#tambahWisataModal").modal("hide");
-				}
-			},
-		});
-	}
-}
 
-function edit_wisata(id) {
-	tipe = "edit";
-	$("#tambahWisataModal").modal("show");
-	$("#kategori_wisata").html("");
-	$("#pengguna_id").html("");
-
+	data.status = role_id == 1 ? 1 : 0;
 	$.ajax({
-		url: "http://localhost:8000/wisata/" + id,
-		type: "GET",
+		url: "http://localhost:8000/wisata/",
+		data: data,
+		type: "POST",
+		dataType: "JSON",
 		success: function (result) {
 			if (result.code != 200) {
 				error(result.message);
 			} else {
-				let wisata = result.data;
-
-				let urlInstagram =
-					wisata.instagram != null
-						? new URL(wisata.instagram).pathname.slice(1)
-						: null;
-				let urlFacebook =
-					wisata.facebook != null
-						? new URL(wisata.facebook).pathname.slice(1)
-						: null;
-				let urlYoutube =
-					wisata.youtube != null
-						? new URL(wisata.youtube).pathname.slice(1)
-						: null;
-				let urlTwitter =
-					wisata.twitter != null
-						? new URL(wisata.twitter).pathname.slice(1)
-						: null;
-				let urlTiktok =
-					wisata.tiktok != null
-						? new URL(wisata.tiktok).pathname.slice(1)
-						: null;
-				let no_cs = wisata.no_cs != null ? wisata.no_cs.slice(3) : null;
-
-				$("#id_wisata").val(wisata.id_wisata);
-				$("#nama_wisata").val(wisata.nama_wisata);
-				$("#deskripsi_wisata").val(wisata.deskripsi_wisata);
-				$("#alamat_wisata").val(wisata.alamat_wisata);
-				$("#latitude").val(wisata.latitude);
-				$("#longitude").val(wisata.longitude);
-				$("#email").val(wisata.email);
-				$("#no_cs").val(no_cs);
-				$("#instagram").val(urlInstagram);
-				$("#facebook").val(urlFacebook);
-				$("#twitter").val(urlTwitter);
-				$("#tiktok").val(urlTiktok);
-				$("#website").val(wisata.website);
-				$("#youtube").val(urlYoutube);
-				$("#status").val(wisata.status);
-
-				$.ajax({
-					url: "http://localhost:8000/kategori_wisata",
-					type: "GET",
-					dataType: "JSON",
-					success: function (result) {
-						const kategori_wisata_id = wisata.kategori_wisata_id;
-						let kategori_wisata = result.data;
-						kategori_wisata.forEach((element) => {
-							if (kategori_wisata_id == element.id_kategori_wisata) {
-								$("#kategori_wisata").append(
-									`<option value="${element.id_kategori_wisata}" selected>${element.kategori}</option>`
-								);
-							} else {
-								$("#kategori_wisata").append(
-									`<option value="${element.id_kategori_wisata}">${element.kategori}</option>`
-								);
-							}
-						});
-					},
-				});
-
-				$.ajax({
-					url: "http://localhost:8000/pengguna/filter?role_id=2&status=1&verifikasi=1",
-					type: "GET",
-					dataType: "JSON",
-					success: function (result) {
-						const pengguna_id = wisata.pengguna_id;
-						let pengelola = result.data;
-
-						if (pengguna_id == 0) {
-							$("#pengguna_id").append(
-								`<option value="0" selected>--Belum ada akun pengguna--</option>`
-							);
-						}
-						pengelola.forEach((element) => {
-							if (pengguna_id == element.id_pengguna) {
-								$("#pengguna_id").append(
-									`<option value="${element.id_pengguna}" selected>${element.username}</option>`
-								);
-							} else {
-								$("#pengguna_id").append(
-									`<option value="${element.id_pengguna}">${element.username}</option>`
-								);
-							}
-						});
-					},
-				});
+				success("Data wisata berhasil ditambahkan");
+				setTimeout(function () {
+					location.href = base_url + "wisata";
+				}, 1000);
 			}
 		},
 	});
 }
+
+function editIsClick() {
+	let email = $("#email").val();
+	let no_cs = $("#no_cs").val();
+	let instagram = $("#instagram").val();
+	let facebook = $("#facebook").val();
+	let twitter = $("#twitter").val();
+	let tiktok = $("#tiktok").val();
+	let website = $("#website").val();
+	let youtube = $("#youtube").val();
+	let data = {
+		kategori_pariwisata_id: 35,
+		kategori_wisata_id: $("#kategori_wisata").val(),
+		nama_wisata: $("#nama_wisata").val(),
+		deskripsi_wisata: $("#deskripsi_wisata").val(),
+		alamat_wisata: $("#alamat_wisata").val(),
+		latitude: $("#latitude").val(),
+		longitude: $("#longitude").val(),
+		pengguna_id: $("#pengguna_id").val(),
+	};
+	data.email = email == "" ? null : $("#email").val();
+	data.no_cs = no_cs == "" ? null : "+62" + $("#no_cs").val();
+	data.instagram =
+		instagram == ""
+			? null
+			: "https://www.instagram.com/" + $("#instagram").val();
+	data.facebook =
+		facebook == "" ? null : "https://web.facebook.com/" + $("#facebook").val();
+	data.twitter =
+		twitter == "" ? null : "https://twitter.com/" + $("#twitter").val();
+	data.tiktok =
+		tiktok == "" ? null : "https://www.tiktok.com/" + $("#tiktok").val();
+	data.website = website == "" ? null : $("#website").val();
+	data.youtube =
+		youtube == "" ? null : "https://www.youtube.com/" + $("#youtube").val();
+
+	data.status = $("#status").val();
+	data.id_wisata = $("#id_wisata").val();
+	$.ajax({
+		url: "http://localhost:8000/wisata/",
+		data: data,
+		type: "PUT",
+		dataType: "JSON",
+		success: function (result) {
+			if (result.code != 200) {
+				error(result.message);
+			} else {
+				success("Data wisata berhasil diubah");
+				setTimeout(function () {
+					location.href = base_url + "wisata";
+				}, 1000);
+			}
+		},
+	});
+}
+
 
 function hapus_wisata(id_wisata) {
 	Swal.fire({

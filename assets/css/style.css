@@ -7,6 +7,32 @@
     color:#B4C6A6;
 }
 
+.gambar_button{
+    background-color: #001E6C;
+    color: white;
+}
+
+.tiket_button{
+    background-color: #65C18C;
+    color: white;
+}
+
+.fasilitas_button{
+    background-color: #F7D716;
+    color: white;
+}
+
+.item_button{
+    background-color: #A3423C;
+    color: white;
+}
+
+.jadwal_button{
+    background-color: #CDDEFF;
+    color: white;
+}
+
+
 .detail_button{
     background-color: #FF8C32;
     color: white;
@@ -52,4 +78,16 @@ border-radius: 20px;
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+
+.dataTables_wrapper {
+    font-size: 14px;
+    position: relative;
+    color: black;
+}
+
+@media (max-width: 767.98px) { 
+    .btn_aksi{
+        margin: 5px;
+    }
 }

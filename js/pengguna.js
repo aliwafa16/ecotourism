@@ -16,7 +16,7 @@ function semua_pengguna() {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?status=1&verifikasi=1",
+			url: "http://localhost:8000/pengguna/filter?status=1",
 			data: function (d) {
 				no = 0;
 			},
@@ -72,7 +72,7 @@ function pengelola_wisata() {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?role_id=2&status=1&verifikasi=1",
+			url: "http://localhost:8000/pengguna/filter?role_id=2&status=1",
 			data: function (d) {
 				no_pengelola = 0;
 			},
@@ -128,7 +128,7 @@ function wisatawan() {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?role_id=3&status=1&verifikasi=1",
+			url: "http://localhost:8000/pengguna/filter?role_id=3&status=1",
 			data: function (d) {
 				no_wisatawan = 0;
 			},
@@ -173,60 +173,60 @@ function wisatawan() {
 	});
 }
 
-function registrasi() {
-	var table = $("#table_registrasi");
-	grid_registrasi = table.DataTable({
-		// scrollX: true,
-		// scrollCollapse: true,
-		aaSorting: [],
-		initComplete: function (settings, json) {},
-		retrieve: true,
-		processing: true,
-		ajax: {
-			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?status=0&verifikasi=1",
-			data: function (d) {
-				no_registrasi = 0;
-			},
-			dataSrc: "data",
-		},
-		columns: [
-			{
-				render: function (data, type, full, meta) {
-					no_registrasi += 1;
+// function registrasi() {
+// 	var table = $("#table_registrasi");
+// 	grid_registrasi = table.DataTable({
+// 		// scrollX: true,
+// 		// scrollCollapse: true,
+// 		aaSorting: [],
+// 		initComplete: function (settings, json) {},
+// 		retrieve: true,
+// 		processing: true,
+// 		ajax: {
+// 			type: "GET",
+// 			url: "http://localhost:8000/pengguna/filter?status=0&verifikasi=1",
+// 			data: function (d) {
+// 				no_registrasi = 0;
+// 			},
+// 			dataSrc: "data",
+// 		},
+// 		columns: [
+// 			{
+// 				render: function (data, type, full, meta) {
+// 					no_registrasi += 1;
 
-					return no_registrasi;
-				},
-				className: "text-center",
-			},
-			{
-				render: function (data, type, full, meta) {
-					return full.username;
-				},
-			},
-			{
-				render: function (data, type, full, meta) {
-					return full.email;
-				},
-			},
-			{
-				render: function (data, type, full, meta) {
-					return full.role.role;
-				},
-			},
-			{
-				render: function (data, type, full, meta) {
-					return `<div class="row">
-                    <div class="col-md-12">
-                        <button onclick="accept_registration(${full.id_pengguna})" type="button" class="btn accept_button"><i class="fa fa-check"></i></button>
-                        <button onclick="hapus_anggota()" type="button" class="btn delete_button"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>`;
-				},
-			},
-		],
-	});
-}
+// 					return no_registrasi;
+// 				},
+// 				className: "text-center",
+// 			},
+// 			{
+// 				render: function (data, type, full, meta) {
+// 					return full.username;
+// 				},
+// 			},
+// 			{
+// 				render: function (data, type, full, meta) {
+// 					return full.email;
+// 				},
+// 			},
+// 			{
+// 				render: function (data, type, full, meta) {
+// 					return full.role.role;
+// 				},
+// 			},
+// 			{
+// 				render: function (data, type, full, meta) {
+// 					return `<div class="row">
+//                     <div class="col-md-12">
+//                         <button onclick="accept_registration(${full.id_pengguna})" type="button" class="btn accept_button"><i class="fa fa-check"></i></button>
+//                         <button onclick="hapus_anggota()" type="button" class="btn delete_button"><i class="fa fa-times"></i></button>
+//                     </div>
+//                 </div>`;
+// 				},
+// 			},
+// 		],
+// 	});
+// }
 
 
 function accept_registration(id) {

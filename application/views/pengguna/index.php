@@ -35,7 +35,6 @@
                                         <a class="nav-link active" id="nav-semua-tab" data-toggle="tab" href="#nav-semua" role="tab" aria-controls="nav-semua" aria-selected="true">Semua</a>
                                         <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pengelola</a>
                                         <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Wisatawan</a>
-                                        <a class="nav-link" id="nav-registrasi-tab" data-toggle="tab" href="#nav-registrasi" role="tab" aria-controls="nav-registrasi" aria-selected="false">Registrasi</a>
                                     </div>
                                 </nav>
                                 <div class="tab-content mt-3" id="nav-tabContent">
@@ -73,21 +72,6 @@
                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                         <div class="table-responsive">
                                             <table class="table table-hover" id="table_wisatawan" style="width: 100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Nama</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Role</th>
-                                                        <th scope="col">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-registrasi" role="tabpanel" aria-labelledby="nav-registrasi-tab">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" id="table_registrasi" style="width: 100%">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">No</th>

@@ -155,6 +155,33 @@ function submitIsClick(forms) {
     })
 }
 
+
+$("#btn_cekEmail").on("click", function () {
+	$(".error-email").html("");
+	$(".success-email").html("");
+	$.ajax({
+		url: "http://localhost:8000/auth/cekEmail",
+		data: {
+			email: $("#email").val(),
+		},
+		type: "POST",
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				$(".error-email").html(
+					`Email sudah digunakan. Lupa password ?<a href="${base_url}" style="color:white"> Klik disini</a>`
+				);
+				$(".success-email").html("");
+			} else {
+				$(".success-email").html(
+					`<p style="color:white">Email bisa digunakan</p>`
+				);
+				$(".error-email").html("");
+			}
+		},
+	});
+});
+
 function verify(data) {
     $.ajax({
         url: base_url + 'Auth/verify/',

@@ -31,6 +31,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-12">
                     <h1 style="color:white; text-align:center" id="pesan"></h1>
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">
+                            <a href="<?= base_url() ?>" type="button" id="btn_login" class="btn" style="background-color: #0093AB; color:white">Masuk</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,20 +52,20 @@
 
 
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function() {
             const pathArray = window.location.pathname.split("/");
             const token = pathArray[4]
-            if(!token){
+            if (!token) {
                 location.href = base_url;
-            }else{
+            } else {
                 $.ajax({
-                    url:'http://localhost:8000/auth/verifikasi',
-                    data:{
+                    url: 'http://localhost:8000/auth/verifikasi',
+                    data: {
                         token
                     },
-                    type:'POST',
-                    dataType : 'JSON',
-                    success: function(result){
+                    type: 'POST',
+                    dataType: 'JSON',
+                    success: function(result) {
                         $('#pesan').text(result.message)
                     }
                 })

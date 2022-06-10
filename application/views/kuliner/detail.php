@@ -31,31 +31,31 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="hidden" id="id_wisata">
+                                        <input type="hidden" id="id_kuliner">
                                         <div class="d-inline">
                                             <h1 class="d-inline"><i class="fas fa-campground text-success"></i></h1>
-                                            <h1 class="d-inline" id="nama_wisata"></h1>
+                                            <h1 class="d-inline" id="nama_kuliner"></h1>
                                         </div>
                                         <div class="d-inline">
                                             <h6 class="d-inline"><i class="fas fa-star text-warning"></i></h6>
-                                            <h6 class="d-inline" id="rating_wisata">(9.3)</h6>
+                                            <h6 class="d-inline" id="rating_kuliner">(9.3)</h6>
                                         </div>
-                                        <p style="text-align: justify;" class="mt-3" id="deskripsi_wisata"></p>
+                                        <p style="text-align: justify;" class="mt-3" id="deskripsi_kuliner"></p>
                                         <div class="row">
                                             <div class="col-md-7">
                                                 <div class="d-inline">
                                                     <h3 class="d-inline"><i class="fas fa-server text-success"></i></h3>
-                                                    <h3 class="d-inline">Data wisata</h3>
+                                                    <h3 class="d-inline">Data wisata kuliner</h3>
                                                 </div>
 
                                                 <div class="mt-2">
                                                     <p class="d-inline"><i class="fas fa-filter text-warning me-3"></i></p>
-                                                    <p class="d-inline" id="kategori_wisata"></p>
+                                                    <p class="d-inline" id="kategori_kuliner"></p>
                                                 </div>
 
                                                 <div class="mt-2">
                                                     <p class="d-inline"><i class="fas fa-map-marked-alt text-info me-3"></i></p>
-                                                    <p class="d-inline" id="alamat_wisata"></p>
+                                                    <p class="d-inline" id="alamat_kuliner"></p>
                                                 </div>
 
                                                 <div class="mt-2">
@@ -178,7 +178,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="mb-0 fw-bold"><i class="fas fa-calendar-alt text-success"></i> Jadwal Operasional</h3>
-                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addJadwal" onclick="jadwal_wisata(document.querySelector('#id_wisata').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addJadwal" onclick="jadwal_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                         <div class="table-responsive">
                                             <table class="table table-hover" id="table_jadwal" style="width:100%">
@@ -192,7 +192,7 @@
                                                         <th scope="col">Aksi</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="body_jadwal">
+                                                <tbody>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -203,21 +203,21 @@
                     </div>
                 </div>
 
-                <!-- TIKET -->
+                <!-- MENU -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
 
-                                <h3 class="mb-0 fw-bold"><i class="far fa-money-bill-alt text-primary"></i> Harga tiket</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTiket" onclick="tiket_wisata(document.querySelector('#id_wisata').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                <h3 class="mb-0 fw-bold"><i class="fas fa-pizza-slice text-primary"></i> Menu</h3>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTiket" onclick="menu_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                 <div class="table-responsive">
-                                    <table class="table table-hover" id="table_tiket">
+                                    <table class="table table-hover" id="table_menu">
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col">No</th>
-                                                <th scope="col">Tiket</th>
+                                                <th scope="col">Nama menu</th>
                                                 <th scope="col">Harga</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col" style="width: 100px;">Aksi</th>
@@ -239,7 +239,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="mb-0 fw-bold"><i class="fas fa-landmark text-info"></i> Fasilitas</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="fasilitas_wisata(document.querySelector('#id_wisata').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="fasilitas_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="table_fasilitas" style="width:100%">
@@ -368,7 +368,7 @@
         <!-- ============================================================== -->
         </div>
 
-        <!-- Modal Jadwal Add-->
+        <!-- Modal Add Jadwal -->
         <div class="modal fade" id="jadwalModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="jadwalModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -379,7 +379,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form action="" method="POST" enctype="multipart/form-data" id="form_jadwal">
-                                    <input type="hidden" class="wisata_id">
+                                    <input type="hidden" class="kuliner_id">
                                     <div class="form-group">
                                         <label for="hari">Jadwal operasional</label>
                                         <input type="text" name="hari" class="form-control" id="hari" placeholder="Senin - Jumat">
@@ -420,7 +420,7 @@
             </div>
         </div>
 
-        <!-- Modal Jadwal Edit -->
+        <!-- Modal Edit Jadwal -->
         <div class="modal fade" id="editJadwalModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editJadwalModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -431,7 +431,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form action="" method="POST" enctype="multipart/form-data" id="form_edit_jadwal">
-                                    <input type="hidden" class="wisata_id">
+                                    <input type="hidden" class="kuliner_id">
                                     <input type="hidden" id="id_jadwal">
                                     <div class="form-group">
                                         <label for="edit_hari">Jadwal operasional</label>
@@ -473,91 +473,93 @@
             </div>
         </div>
 
-        <!-- Modal add Tiket -->
-        <div class="modal fade" id="tiketModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="tiketModalLabel" aria-hidden="true">
+
+        <!-- Modal add menu -->
+        <div class="modal fade" id="menuModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="menuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="tiketModalLabel">Tambah Tiket</h5>
+                        <h5 class="modal-title" id="menuModalLabel">Tambah Menu Kuliner</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="form_tiket">
-                                    <input type="hidden" class="wisata_id">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_menu">
+                                    <input type="hidden" class="kuliner_id">
                                     <div class="form-group">
-                                        <label for="tiket">Tiket Wisata</label>
-                                        <input type="text" name="tiket" class="form-control" id="tiket" placeholder="Nama tiket wisata...">
+                                        <label for="menu_kuliner">Nama menu</label>
+                                        <input type="text" name="menu_kuliner" class="form-control" id="menu_kuliner" placeholder="Nama menu wisata kuliner...">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
-                                                <label for="harga" class="form-label">Harga tiket</label>
+                                                <label for="harga" class="form-label">Harga</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="harga" id="harga" placeholder="harga tiket (dalam rupiah)" aria-label="harga tiket (dalam rupiah)" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" name="harga" id="harga" placeholder="harga menu (dalam rupiah)" aria-label="harga menu (dalam rupiah)" aria-describedby="basic-addon1">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="keterangan">keterangan</label>
-                                        <textarea class="form-control" name="keterangan" id="keterangan_tiket" rows="3"></textarea>
+                                        <label for="keterangan_menu">Keterangan</label>
+                                        <textarea class="form-control" name="keterangan_menu" id="keterangan_menu" rows="3"></textarea>
                                     </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" id="submit_addTiket" class="btn btn-primary">Tambah</button>
+                        <button type="submit" id="submit_addMenu" class="btn btn-primary">Tambah</button>
                     </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Modal edit tiket -->
-        <div class="modal fade" id="editTiketModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editTiketModalLabel" aria-hidden="true">
+
+        <!-- Modal edit menu -->
+        <div class="modal fade" id="editMenuModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editMenuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editTiketModalLabel">Edit Tiket</h5>
+                        <h5 class="modal-title" id="editMenuModalLabel">Edit Menu Kuliner</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="form_tiket">
-                                    <input type="hidden" id="id_tiket">
-                                    <input type="hidden" class="wisata_id">
+                                <form action="" method="POST" enctype="multipart/form-data" id="edit_form_menu">
+                                    <input type="hidden" id="id_menu_kuliner">
+                                    <input type="hidden" class="kuliner_id">
                                     <div class="form-group">
-                                        <label for="edit_tiket">Tiket Wisata</label>
-                                        <input type="text" name="edit_tiket" class="form-control" id="edit_tiket" placeholder="Nama tiket wisata...">
+                                        <label for="edit_menu_kuliner">Nama menu</label>
+                                        <input type="text" name="edit_menu_kuliner" class="form-control" id="edit_menu_kuliner" placeholder="Nama menu wisata kuliner...">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
-                                                <label for="edit_harga" class="form-label">Harga tiket</label>
+                                                <label for="edit_harga" class="form-label">Harga</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1">Rp</span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="edit_harga" id="edit_harga" placeholder="harga tiket (dalam rupiah)" aria-label="harga tiket (dalam rupiah)" aria-describedby="basic-addon1">
+                                                    <input type="text" class="form-control" name="edit_harga" id="edit_harga" placeholder="harga menu (dalam rupiah)" aria-label="harga menu (dalam rupiah)" aria-describedby="basic-addon1">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="edit_keterangan_tiket">Keterangan</label>
-                                        <textarea class="form-control" name="edit_keterangan_tiket" id="edit_keterangan_tiket" rows="3"></textarea>
+                                        <label for="edit_keterangan_menu">Keterangan</label>
+                                        <textarea class="form-control" name="edit_keterangan_menu" id="edit_keterangan_menu" rows="3"></textarea>
                                     </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" id="submit_editTiket" class="btn btn-primary">Ubah</button>
+                        <button type="submit" id="submit_editMenu" class="btn btn-primary">Ubah</button>
                     </div>
                     </form>
                 </div>
@@ -606,7 +608,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="form_fasilitas">
+                                <form action="" method="POST" enctype="multipart/form-data" id="edit_form_fasilitas">
                                     <input type="hidden" class="wisata_id">
                                     <input type="hidden" id="id_fasilitas">
                                     <div class="form-group">
@@ -630,67 +632,66 @@
         </div>
 
 
-
         <script>
             $(document).ready(function() {
-                if (localStorage.getItem("id_wisata") != null) {
-                    const id_wisata = localStorage.getItem("id_wisata")
+                if (localStorage.getItem("id_kuliner") != null) {
+                    const id_kuliner = localStorage.getItem("id_kuliner")
 
                     $.ajax({
-                        url: 'http://localhost:8000/wisata/' + id_wisata,
+                        url: 'http://localhost:8000/kuliner/' + id_kuliner,
                         type: 'GET',
                         dataType: 'JSON',
                         success: function(results) {
 
-                            let wisata = results.data
-                            let kategori = wisata.kategori_wisata
-                            let jadwal = wisata.jadwal
-                            let tiket = wisata.tiket
-                            let fasilitas = wisata.fasilitas
-                            let item = wisata.item
+                            let kuliner = results.data
+                            let kategori = kuliner.kategori_kuliner
+                            let jadwal = kuliner.jadwal
+                            let menu = kuliner.menu
+                            let fasilitas = kuliner.fasilitas
+                            let item = kuliner.item
 
-                            console.log(wisata)
 
+                            console.log(kuliner)
 
 
                             let urlInstagram =
-                                wisata.instagram != null ?
-                                new URL(wisata.instagram).pathname.slice(1) :
+                                kuliner.instagram != null ?
+                                new URL(kuliner.instagram).pathname.slice(1) :
                                 "-";
                             let urlFacebook =
-                                wisata.facebook != null ?
-                                new URL(wisata.facebook).pathname.slice(1) :
+                                kuliner.facebook != null ?
+                                new URL(kuliner.facebook).pathname.slice(1) :
                                 "-";
                             let urlYoutube =
-                                wisata.youtube != null ?
-                                new URL(wisata.youtube).pathname.slice(1) :
+                                kuliner.youtube != null ?
+                                new URL(kuliner.youtube).pathname.slice(1) :
                                 '-';
                             let urlTwitter =
-                                wisata.twitter != null ?
-                                new URL(wisata.twitter).pathname.slice(1) :
+                                kuliner.twitter != null ?
+                                new URL(kuliner.twitter).pathname.slice(1) :
                                 '-';
                             let urlTiktok =
-                                wisata.tiktok != null ?
-                                new URL(wisata.tiktok).pathname.slice(1) :
+                                kuliner.tiktok != null ?
+                                new URL(kuliner.tiktok).pathname.slice(1) :
                                 '-';
 
-                            let no_cs = wisata.no_cs != null ? wisata.no_cs : '-';
-                            let website = wisata.website != null ? wisata.website : '-'
+                            let no_cs = kuliner.no_cs != null ? kuliner.no_cs : '-';
+                            let website = kuliner.website != null ? kuliner.website : '-'
 
-                            $('#id_wisata').val(wisata.id_wisata);
-                            $('#nama_wisata').text(wisata.nama_wisata);
-                            $('#deskripsi_wisata').text(wisata.deskripsi_wisata);
-                            $('#alamat_wisata').text(wisata.alamat_wisata)
-                            $('#latitude_longitude').text(wisata.latitude + ', ' + wisata.longitude)
+                            $('#id_kuliner').val(kuliner.id_kuliner);
+                            $('#nama_kuliner').text(kuliner.nama_kuliner);
+                            $('#deskripsi_kuliner').text(kuliner.deskripsi_kuliner);
+                            $('#alamat_kuliner').text(kuliner.alamat_kuliner)
+                            $('#latitude_longitude').text(kuliner.latitude + ', ' + kuliner.longitude)
                             $('#instagram').text(urlInstagram);
                             $('#facebook').text(urlFacebook);
                             $('#twitter').text(urlTwitter);
                             $('#youtube').text(urlYoutube);
                             $('#tiktok').text(urlTiktok);
                             $('#website').text(website)
-                            $('#email').text(wisata.email);
+                            $('#email').text(kuliner.email);
                             $('#no_cs').text(no_cs);
-                            $('#kategori_wisata').text(kategori.kategori);
+                            $('#kategori_kuliner').text(kategori.jenis_kuliner);
 
 
                             // JADWAL
@@ -730,6 +731,7 @@
                                     },
                                     {
                                         render: function(data, type, full, meta) {
+
                                             return full.keterangan
                                         },
                                         className: 'text-center',
@@ -748,8 +750,9 @@
                                 ]
                             })
 
-                            $('#table_tiket').DataTable({
-                                data: tiket,
+                            // MENU
+                            $('#table_menu').DataTable({
+                                data: menu,
                                 lengthMenu: [
                                     [3, 6, 9, 12, -1],
                                     [3, 6, 9, 12, "All"],
@@ -763,7 +766,7 @@
                                     },
                                     {
                                         render: function(data, type, full, meta) {
-                                            return full.tiket
+                                            return full.nama_menu
                                         },
                                         className: 'text-center',
                                         width: '25%'
@@ -785,8 +788,8 @@
                                     {
                                         render: function(data, type, full, meta) {
                                             return `<div>
-                                                        <button type="button" onclick="edit_tiket('${full.id_tiket}')" class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
-                                                        <button type="button" onclick="hapus_tiket('${full.id_tiket}')" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
+                                                        <button type="button" onclick="edit_menu('${full.id_menu_kuliner}')" class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
+                                                        <button type="button" onclick="hapus_menu('${full.id_menu_kuliner}')" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
                                                     </div>`
                                         },
                                         className: 'text-center',
@@ -795,6 +798,7 @@
                                 ]
                             })
 
+                            // FASILITAS
                             $('#table_fasilitas').DataTable({
                                 data: fasilitas,
                                 lengthMenu: [
@@ -835,6 +839,7 @@
                                 ]
                             })
 
+                            // ITEM
                             $('#table_item').DataTable({
                                 data: item,
                                 lengthMenu: [
@@ -884,8 +889,6 @@
                 }
             })
 
-
-            // JADWAL
             function edit_jadwal(id_jadwal) {
                 $('#editJadwalModal').modal('show');
                 $.ajax({
@@ -895,7 +898,7 @@
                     success: function(results) {
                         let data = results.data;
                         $('#id_jadwal').val(data.id_jadwal);
-                        $('.wisata_id').val(data.id_pariwisata);
+                        $('.kuliner_id').val(data.id_pariwisata);
                         $('#edit_hari').val(data.hari);
                         $('#edit_jam_buka').val(data.jam_buka);
                         $('#edit_jam_tutup').val(data.jam_tutup);
@@ -908,7 +911,7 @@
                 e.preventDefault()
                 let data = {
                     id_jadwal: $('#id_jadwal').val(),
-                    id_pariwisata: $('.wisata_id').val(),
+                    id_pariwisata: $('.kuliner_id').val(),
                     hari: $("#edit_hari").val(),
                     jam_buka: $("#edit_jam_buka").val(),
                     jam_tutup: $("#edit_jam_tutup").val(),
@@ -923,7 +926,7 @@
                         if (results.code != 200) {
                             error(result.message);
                         } else {
-                            success("Data jadwal wisata berhasil diubah");
+                            success("Data jadwal wisata kuliner berhasil diubah");
                             setTimeout(function() {
                                 location.reload();
                             }, 2000);
@@ -955,7 +958,7 @@
                                 if (results.code != 200) {
                                     error(result.message);
                                 } else {
-                                    success("Data jadwal wisata berhasil dihapus");
+                                    success("Data jadwal wisata kuliner berhasil dihapus");
                                     setTimeout(function() {
                                         location.reload();
                                     }, 2000);
@@ -966,46 +969,45 @@
                 });
             }
 
-            // TIKET
-            function edit_tiket(id_tiket) {
-                console.log(id_tiket)
-                $('#editTiketModal').modal('show');
+            function edit_menu(id_menu_kuliner) {
+                console.log(id_menu_kuliner)
+                $('#editMenuModal').modal('show');
                 $.ajax({
-                    url: 'http://localhost:8000/tiket/' + id_tiket,
+                    url: 'http://localhost:8000/menu_kuliner/' + id_menu_kuliner,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(results) {
                         let data = results.data;
-                        $('#id_tiket').val(data.id_tiket);
-                        $('.wisata_id').val(data.id_pariwisata);
-                        $('#edit_tiket').val(data.tiket);
+                        $('#id_menu_kuliner').val(data.id_menu_kuliner);
+                        $('.kuliner_id').val(data.kuliner_id);
+                        $('#edit_menu_kuliner').val(data.nama_menu);
                         $('#edit_harga').val(data.harga);
-                        $('#edit_keterangan_tiket').val(data.keterangan)
+                        $('#edit_keterangan_menu').val(data.keterangan)
                     }
                 })
             }
 
-            $('#submit_editTiket').on('click', function(e) {
+            $('#submit_editMenu').on('click', function(e) {
                 e.preventDefault();
                 let data = {
-                    id_tiket: $('#id_tiket').val(),
-                    id_pariwisata: $(".wisata_id").val(),
-                    tiket: $("#edit_tiket").val(),
+                    id_menu_kuliner: $('#id_menu_kuliner').val(),
+                    kuliner_id: $(".kuliner_id").val(),
+                    nama_menu: $("#edit_menu_kuliner").val(),
                     harga: $("#edit_harga").val(),
-                    keterangan: $("#edit_keterangan_tiket").val(),
+                    keterangan: $("#edit_keterangan_menu").val(),
                 };
                 console.log(data)
 
                 $.ajax({
-                    url: "http://localhost:8000/tiket",
+                    url: "http://localhost:8000/menu_kuliner",
                     data: data,
                     type: "PUT",
                     dataType: "JSON",
                     success: function(results) {
                         if (results.code != 200) {
-                            error(result.message);
+                            error(results.message);
                         } else {
-                            success("Data tiket wisata berhasil diubah");
+                            success("Data menu wisata kuliner berhasil diubah");
                             setTimeout(function() {
                                 location.reload();
                             }, 2000);
@@ -1015,10 +1017,10 @@
 
             })
 
-            function hapus_tiket(id_tiket) {
+            function hapus_menu(id_menu_kuliner) {
                 Swal.fire({
-                    title: "Yakin ingin menghapus data tiket ?",
-                    text: "Data tiket yang sudah dihapus, tidak bisa dikembalikan lagi",
+                    title: "Yakin ingin menghapus data menu kuliner ?",
+                    text: "Data menu yang sudah dihapus, tidak bisa dikembalikan lagi",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
@@ -1028,17 +1030,17 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/tiket/",
+                            url: "http://localhost:8000/menu_kuliner/",
                             type: "DELETE",
                             data: {
-                                id_tiket,
+                                id_menu_kuliner,
                             },
                             dataType: "JSON",
                             success: function(results) {
                                 if (results.code != 200) {
-                                    error(result.message);
+                                    error(results.message);
                                 } else {
-                                    success("Data tiket wisata berhasil dihapus");
+                                    success("Data menu kuliner berhasil dihapus");
                                     setTimeout(function() {
                                         location.reload();
                                     }, 2000);
@@ -1049,7 +1051,7 @@
                 });
             }
 
-            // FASILITAS
+
             function edit_fasilitas(id_fasilitas) {
                 $('#editFasilitasModal').modal('show');
                 $.ajax({
@@ -1125,22 +1127,5 @@
                     }
                 });
             }
-
-            function success(params) {
-                Swal.fire({
-                    icon: "success",
-                    title: "" + params,
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-            }
-
-            function error(params) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "" + params,
-                });
-            }
         </script>
-        <script src="<?= base_url() ?>js/wisata.js"></script>
+        <script src="<?= base_url() ?>js/kuliner.js"></script>
