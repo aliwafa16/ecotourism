@@ -29,7 +29,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><?= $table_name ?></h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="card-title"><?= $table_name ?></h4>
+                                        <a href="<?= base_url() ?>Penginapan/tambah" type="button" class="btn add_button mb-3" id="btn_addWisata"><i class="fa fa-plus"></i>Tambah data</a>
+                                    </div>
+                                </div>
                                 <!-- <h6 class="card-subtitle">Using the most basic table markup, here’s how
                                     <code>.table</code>-based tables look in Bootstrap. All table styles are inherited
                                     in Bootstrap 4, meaning any nested tables will be styled in the same manner as the
@@ -38,7 +43,7 @@
                                 <!-- <h6 class="card-title m-t-40"><i class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i> Table With
                                     Outside Padding</h6> -->
                                 <div class="table-responsive">
-                                    <table class="table table-hover" id="table_wisata">
+                                    <table class="table table-hover" id="table_penginapan">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
@@ -79,4 +84,24 @@
             <!-- End footer -->
             <!-- ============================================================== -->
         </div>
+
+        <!-- Modal deskripsi -->
+        <div class="modal fade" id="deskripsiModal" tabindex="-1" aria-labelledby="deskripsiModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deskripsiModalLabel">Deskripsi Penginapan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="deskripsi"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="<?= base_url() ?>js/penginapan.js"></script>
