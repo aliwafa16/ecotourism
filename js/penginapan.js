@@ -60,7 +60,9 @@ $(document).ready(function () {
 			},
 			{
 				render: function (data, type, full, meta) {
-					return `<div class="row align-items-center">
+					return `
+					<div class="container">
+					<div class="row align-items-center">
                     <div class="col-md-3 mt-2">
                         <button type="button" onclick="detail_penginapan('${full.id_penginapan}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
                     </div>
@@ -74,18 +76,16 @@ $(document).ready(function () {
                         <button onclick="gambar_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi gambar_button btn-sm"><i class="fa fa-camera"></i></button>
                     </div>
                     <div class="col-md-3 mt-2">
-                        <button onclick="menu_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi tiket_button btn-sm"><i class="fas fa-pizza-slice"></i></button>
+                        <button onclick="kamar_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi tiket_button btn-sm"><i class="fas fa-tag"></i></button>
                     </div>
                     <div class="col-md-3 mt-2">
                         <button onclick="fasilitas_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi fasilitas_button btn-sm"><i class="fa fa-landmark"></i></button>
                     </div>
                     <div class="col-md-3 mt-2">
-                        <button onclick="jadwal_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi jadwal_button btn-sm"><i class="fa fa-calendar-alt"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
                         <button onclick="item_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi item_button btn-sm"><i class="fa fa-th-list"></i></button>
                     </div>
-                </div>`;
+                	</div>
+				    </div>`;
 				},
 				width: "15%",
 				className: "text-center",
@@ -367,6 +367,127 @@ function submitIsClick() {
 		},
 	});
 }
+
+function kamar_penginapan(id_penginapan) {
+	$("#kamarPenginapanModal").modal("show");
+	$("#form_kamar_penginapan")[0].reset();
+	$(".penginapan_id").val(id_penginapan);
+}
+
+$("#submit_addKamarPenginapan").on("click", function (e) {
+	e.preventDefault();
+	let data = {
+		penginapan_id: $(".penginapan_id").val(),
+		tipe_kamar: $("#tipe_kamar").val(),
+		kapasitas: $("#kapasitas").val(),
+		harga: $("#harga").val(),
+		keterangan: $("#keterangan_kamar_penginapan").val(),
+	};
+
+	console.log(data);
+
+	$.ajax({
+		url: "http://localhost:8000/jenis_kamar",
+		data: data,
+		type: "POST",
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success("Data kamar penginapan berhasil ditambahkan");
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
+function fasilitas_penginapan(id_penginapan) {
+	$("#fasilitasModal").modal("show");
+	$("#form_fasilitas")[0].reset();
+	$(".penginapan_id").val(id_penginapan);
+}
+
+$("#submit_addFasilitas").on("click", function (e) {
+	e.preventDefault();
+	let data = {
+		id_pariwisata: $(".penginapan_id").val(),
+		nama_fasilitas: $("#fasilitas").val(),
+		keterangan: $("#keterangan_fasilitas").val(),
+	};
+	$.ajax({
+		url: "http://localhost:8000/fasilitas",
+		data: data,
+		type: "POST",
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success("Data fasilitas penginapan berhasil ditambahkan");
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
+function fasilitas_kamar_penginapan(id_penginapan) {
+	$("#fasilitasKamarModal").modal("show");
+	$("#form_fasilitas_kamar")[0].reset();
+	$(".penginapan_id").val(id_penginapan);
+
+	const data = {
+		id_penginapan,
+	};
+	$("#tipe_kamar_id").html("");
+	$.ajax({
+		url:
+			"http://localhost:8000/jenis_kamar/find?penginapan_id=" + id_penginapan,
+		type: "GET",
+		data: data,
+		dataType: "JSON",
+		success: function (results) {
+			let result = results.data;
+			result.forEach((element) => {
+				$("#tipe_kamar_id").append(
+					`<option value="${element.id_kamar_penginapan}">${element.tipe_kamar}</option>`
+				);
+			});
+		},
+	});
+}
+
+$("#submit_addFasilitasKamar").on("click", function (e) {
+	e.preventDefault();
+	let data = {
+		penginapan_id: $(".penginapan_id").val(),
+		kamar_penginapan_id: $("#tipe_kamar_id").val(),
+		nama_fasilitas: $("#fasilitas_kamar").val(),
+		keterangan: $("#keterangan_fasilitas_kamar").val(),
+	};
+
+	$.ajax({
+		url: "http://localhost:8000/fasilitas_kamar",
+		type: "POST",
+		data,
+		dataType: "JSON",
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success("Data fasilitas kamar berhasil ditambahkan");
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
 
 function success(params) {
 	Swal.fire({
