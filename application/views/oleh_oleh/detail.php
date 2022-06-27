@@ -31,31 +31,26 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="hidden" id="id_penginapan">
+                                        <input type="hidden" id="id_oleh_oleh">
                                         <div class="d-inline">
                                             <h1 class="d-inline"><i class="fas fa-campground text-success"></i></h1>
-                                            <h1 class="d-inline" id="nama_penginapan"></h1>
+                                            <h1 class="d-inline" id="nama_oleh_oleh"></h1>
                                         </div>
                                         <div class="d-inline">
                                             <h6 class="d-inline"><i class="fas fa-star text-warning"></i></h6>
-                                            <h6 class="d-inline" id="rating_penginapan">(9.3)</h6>
+                                            <h6 class="d-inline" id="rating_oleh_oleh">(9.3)</h6>
                                         </div>
-                                        <p style="text-align: justify;" class="mt-3" id="deskripsi_penginapan"></p>
+                                        <p style="text-align: justify;" class="mt-3" id="deskripsi_oleh_oleh"></p>
                                         <div class="row">
                                             <div class="col-md-7">
                                                 <div class="d-inline">
                                                     <h3 class="d-inline"><i class="fas fa-server text-success"></i></h3>
-                                                    <h3 class="d-inline">Data wisata penginapan</h3>
-                                                </div>
-
-                                                <div class="mt-2">
-                                                    <p class="d-inline"><i class="fas fa-filter text-warning me-3"></i></p>
-                                                    <p class="d-inline" id="kategori_penginapan"></p>
+                                                    <h3 class="d-inline">Data wisata oleh-oleh</h3>
                                                 </div>
 
                                                 <div class="mt-2">
                                                     <p class="d-inline"><i class="fas fa-map-marked-alt text-info me-3"></i></p>
-                                                    <p class="d-inline" id="alamat_penginapan"></p>
+                                                    <p class="d-inline" id="alamat_oleh_oleh"></p>
                                                 </div>
 
                                                 <div class="mt-2">
@@ -170,24 +165,24 @@
                     </div>
                 </div>
 
-                <!-- TIPE KAMAR -->
+                <!-- JADWAL OPERASIONAL -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="mb-0 fw-bold"><i class="fas fa-tag text-success"></i>Tipe Kamar</h3>
-                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTipeKamar" onclick="kamar_penginapan(document.querySelector('#id_penginapan').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                        <h3 class="mb-0 fw-bold"><i class="fas fa-calendar-alt text-success"></i> Jadwal Operasional</h3>
+                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addJadwal" onclick="jadwal_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                         <div class="table-responsive">
-                                            <table class="table table-hover" id="table_tipe_kamar" style="width:100%">
+                                            <table class="table table-hover" id="table_jadwal" style="width:100%">
                                                 <thead>
                                                     <tr class="text-center">
                                                         <th scope="col">No</th>
-                                                        <th scope="col">Tipe Kamar</th>
-                                                        <th scope="col">Kapasitas</th>
-                                                        <th scope="col">Harga</th>
+                                                        <th scope="col">Hari</th>
+                                                        <th scope="col">Jam Buka</th>
+                                                        <th scope="col">Jam Tutup</th>
                                                         <th scope="col">Keterangan</th>
                                                         <th scope="col">Aksi</th>
                                                     </tr>
@@ -203,24 +198,22 @@
                     </div>
                 </div>
 
-
-
-                <!-- Fasilitas Kamar -->
-                <!-- <div class="row">
+                <!-- MENU -->
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
 
-                                <h3 class="mb-0 fw-bold"><i class="fas fa-pizza-slice text-primary"></i> Fasilitas Kamar</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTiket" onclick="fasilitas_kamar(document.querySelector('#id_penginapan').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                <h3 class="mb-0 fw-bold"><i class="fas fa-pizza-slice text-primary"></i> Menu</h3>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTiket" onclick="menu_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                 <div class="table-responsive">
-                                    <table class="table table-hover" id="table_fasilitas_kamar">
+                                    <table class="table table-hover" id="table_menu">
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col">No</th>
-                                                <th scope="col">Fasilitas</th>
-                                                <th scope="col">Tipe Kamar</th>
+                                                <th scope="col">Nama menu</th>
+                                                <th scope="col">Harga</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col" style="width: 100px;">Aksi</th>
                                             </tr>
@@ -233,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
                 <!-- FASILITAS -->
                 <div class="row">
@@ -241,7 +234,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="mb-0 fw-bold"><i class="fas fa-landmark text-info"></i> Fasilitas</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="fasilitas_penginapan(document.querySelector('#id_penginapan').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="fasilitas_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="table_fasilitas" style="width:100%">
@@ -370,99 +363,105 @@
         <!-- ============================================================== -->
         </div>
 
-        <!-- Modal Add Kamar Penginapan -->
-        <div class="modal fade" id="kamarPenginapanModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="kamarPenginapanModalLabel" aria-hidden="true">
+        <!-- Modal Add Jadwal -->
+        <div class="modal fade" id="jadwalModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="jadwalModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="kamarPenginapanModalLabel">Tambah Data Kamar Penginapan</h5>
+                        <h5 class="modal-title" id="jadwalModalLabel">Tambah Jadwal</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="form_kamar_penginapan">
-                                    <input type="hidden" class="penginapan_id">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_jadwal">
+                                    <input type="hidden" class="kuliner_id">
                                     <div class="form-group">
-                                        <label for="tipe_kamar">Tipe kamar</label>
-                                        <input type="text" name="tipe_kamar" class="form-control" id="tipe_kamar" placeholder="Tipe kamar wisata penginapan...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="kapasitas">Kapasitas</label>
-                                        <input type="text" name="kapasitas" class="form-control" id="kapasitas" placeholder="Kapasitas kamar penginapan...">
+                                        <label for="hari">Jadwal operasional</label>
+                                        <input type="text" name="hari" class="form-control" id="hari" placeholder="Senin - Jumat">
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="harga" class="form-label">Harga</label>
+                                                <label for="jam_buka" class="form-label">Jam buka</label>
                                                 <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Rp</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="harga" id="harga" placeholder="harga menu (dalam rupiah)" aria-label="harga menu (dalam rupiah)" aria-describedby="basic-addon1">
+                                                    <span class="input-group-text" id="basic-addon1">WIB</span>
+                                                    <input type="text" class="form-control" name="jam_buka" id="jam_buka" autocomplete="off" placeholder="10:00">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="jam_tutup" class="form-label">Jam tutup</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">WIB</span>
+                                                    <input type="text" class="form-control" name="jam_tutup" id="jam_tutup" autocomplete="off" placeholder="17:00">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="keterangan_kamar_penginapan">Keterangan</label>
-                                        <textarea class="form-control" name="keterangan_kamar_penginapan" id="keterangan_kamar_penginapan" rows="3"></textarea>
+                                        <label for="keterangan_jadwal">Keterangan</label>
+                                        <textarea class="form-control keterangan_jadwal" name="keterangan_jadwal" id="keterangan_jadwal" rows="3"></textarea>
                                     </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" id="submit_addKamarPenginapan" class="btn btn-primary">Tambah</button>
+                        <button type="submit" id="submit_addJadwal" class="btn btn-primary">Tambah</button>
                     </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Modal Edit Kamar Penginapan -->
-        <div class="modal fade" id="editKamarPenginapanModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editKamarPenginapanModalLabel" aria-hidden="true">
+        <!-- Modal Edit Jadwal -->
+        <div class="modal fade" id="editJadwalModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editJadwalModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editKamarPenginapanModalLabel">Edit Kamar</h5>
+                        <h5 class="modal-title" id="editJadwalModalLabel">Edit Jadwal</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="form_edit_kamar">
-                                    <input type="hidden" class="penginapan_id">
-                                    <input type="hidden" id="id_kamar_penginapan">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_edit_jadwal">
+                                    <input type="hidden" class="kuliner_id">
+                                    <input type="hidden" id="id_jadwal">
                                     <div class="form-group">
-                                        <label for="edit_tipe_kamar">Tipe kamar</label>
-                                        <input type="text" name="edit_tipe_kamar" class="form-control" id="edit_tipe_kamar" placeholder="Tipe kamar wisata penginapan...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="edit_kapasitas">Kapasitas</label>
-                                        <input type="text" name="edit_kapasitas" class="form-control" id="edit_kapasitas" placeholder="Kapasitas kamar penginapan...">
+                                        <label for="edit_hari">Jadwal operasional</label>
+                                        <input type="text" name="edit_hari" class="form-control" id="edit_hari" placeholder="Senin - Jumat">
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="edit_harga" class="form-label">Harga</label>
+                                                <label for="edit_jam_buka" class="form-label">Jam buka</label>
                                                 <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Rp</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="edit_harga" id="edit_harga" placeholder="harga menu (dalam rupiah)" aria-label="harga menu (dalam rupiah)" aria-describedby="basic-addon1">
+                                                    <span class="input-group-text" id="basic-addon1">WIB</span>
+                                                    <input type="text" class="form-control" name="edit_jam_buka" id="edit_jam_buka" autocomplete="off" placeholder="10:00">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="edit_jam_tutup" class="form-label">Jam tutup</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">WIB</span>
+                                                    <input type="text" class="form-control" name="edit_jam_tutup" id="edit_jam_tutup" autocomplete="off" placeholder="17:00">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="edit_keterangan_kamar_penginapan">Keterangan</label>
-                                        <textarea class="form-control" name="edit_keterangan_kamar_penginapan" id="edit_keterangan_kamar_penginapan" rows="3"></textarea>
+                                        <label for="edit_keterangan_jadwal">Keterangan</label>
+                                        <textarea class="form-control keterangan" name="edit_keterangan_jadwal" id="edit_keterangan_jadwal" rows="3"></textarea>
                                     </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" id="submit_editKamar" class="btn btn-primary">Ubah</button>
+                        <button type="submit" id="submit_editJadwal" class="btn btn-primary">Ubah</button>
                     </div>
                     </form>
                 </div>
@@ -630,66 +629,66 @@
 
         <script>
             $(document).ready(function() {
-                if (localStorage.getItem("id_penginapan") != null) {
-                    const id_penginapan = localStorage.getItem("id_penginapan")
+                if (localStorage.getItem("id_oleh_oleh") != null) {
+                    const id_oleh_oleh = localStorage.getItem("id_oleh_oleh")
 
                     $.ajax({
-                        url: 'http://localhost:8000/penginapan/' + id_penginapan,
+                        url: 'http://localhost:8000/oleh_oleh/' + id_oleh_oleh,
                         type: 'GET',
                         dataType: 'JSON',
                         success: function(results) {
 
-                            let penginapan = results.data
-                            let kategori = penginapan.kategori_penginapan
-                            let tipe_kamar = penginapan.tipe_kamar
-                            let fasilitas = penginapan.fasilitas
-                            let item = penginapan.item
+                            let oleh_oleh = results.data
+                            let jadwal = oleh_oleh.jadwal
+                            let fasilitas = oleh_oleh.fasilitas
+                            let item = oleh_oleh.item
 
+
+                            console.log(oleh_oleh)
 
 
                             let urlInstagram =
-                                penginapan.instagram != null ?
-                                new URL(penginapan.instagram).pathname.slice(1) :
+                                oleh_oleh.instagram != null ?
+                                new URL(oleh_oleh.instagram).pathname.slice(1) :
                                 "-";
                             let urlFacebook =
-                                penginapan.facebook != null ?
-                                new URL(penginapan.facebook).pathname.slice(1) :
+                                oleh_oleh.facebook != null ?
+                                new URL(oleh_oleh.facebook).pathname.slice(1) :
                                 "-";
                             let urlYoutube =
-                                penginapan.youtube != null ?
-                                new URL(penginapan.youtube).pathname.slice(1) :
+                                oleh_oleh.youtube != null ?
+                                new URL(oleh_oleh.youtube).pathname.slice(1) :
                                 '-';
                             let urlTwitter =
-                                penginapan.twitter != null ?
-                                new URL(penginapan.twitter).pathname.slice(1) :
+                                oleh_oleh.twitter != null ?
+                                new URL(oleh_oleh.twitter).pathname.slice(1) :
                                 '-';
                             let urlTiktok =
-                                penginapan.tiktok != null ?
-                                new URL(penginapan.tiktok).pathname.slice(1) :
+                                oleh_oleh.tiktok != null ?
+                                new URL(oleh_oleh.tiktok).pathname.slice(1) :
                                 '-';
 
-                            let no_cs = penginapan.no_cs != null ? penginapan.no_cs : '-';
-                            let website = penginapan.website != null ? penginapan.website : '-'
+                            let no_cs = oleh_oleh.no_cs != null ? oleh_oleh.no_cs : '-';
+                            let website = oleh_oleh.website != null ? oleh_oleh.website : '-'
 
-                            $('#id_penginapan').val(penginapan.id_penginapan);
-                            $('#nama_penginapan').text(penginapan.nama_penginapan);
-                            $('#deskripsi_penginapan').text(penginapan.deskripsi_penginapan);
-                            $('#alamat_penginapan').text(penginapan.alamat_penginapan)
-                            $('#latitude_longitude').text(penginapan.latitude + ', ' + penginapan.longitude)
+                            $('#id_oleh_oleh').val(oleh_oleh.id_oleh_oleh);
+                            $('#nama_oleh_oleh').text(oleh_oleh.nama_oleh_oleh);
+                            $('#deskripsi_oleh_oleh').text(oleh_oleh.deskripsi_oleh_oleh);
+                            $('#alamat_oleh_oleh').text(oleh_oleh.alamat_oleh_oleh)
+                            $('#latitude_longitude').text(oleh_oleh.latitude + ', ' + oleh_oleh.longitude)
                             $('#instagram').text(urlInstagram);
                             $('#facebook').text(urlFacebook);
                             $('#twitter').text(urlTwitter);
                             $('#youtube').text(urlYoutube);
                             $('#tiktok').text(urlTiktok);
                             $('#website').text(website)
-                            $('#email').text(penginapan.email);
+                            $('#email').text(oleh_oleh.email);
                             $('#no_cs').text(no_cs);
-                            $('#kategori_penginapan').text(kategori.jenis_penginapan);
 
 
-                            // TIPE KAMAR
-                            $('#table_tipe_kamar').DataTable({
-                                data: tipe_kamar,
+                            // JADWAL
+                            $('#table_jadwal').DataTable({
+                                data: jadwal,
                                 lengthMenu: [
                                     [3, 6, 9, 12, -1],
                                     [3, 6, 9, 12, "All"],
@@ -703,21 +702,21 @@
                                     },
                                     {
                                         render: function(data, type, full, meta) {
-                                            return full.tipe_kamar
+                                            return full.hari
                                         },
                                         className: 'text-center',
                                         width: '25%'
                                     },
                                     {
                                         render: function(data, type, full, meta) {
-                                            return full.kapasitas + ' Orang'
+                                            return full.jam_buka
                                         },
                                         className: 'text-center',
                                         width: '15%'
                                     },
                                     {
                                         render: function(data, type, full, meta) {
-                                            return 'Rp ' + full.harga
+                                            return full.jam_tutup
                                         },
                                         className: 'text-center',
                                         width: '15%'
@@ -733,8 +732,8 @@
                                     {
                                         render: function(data, type, full, meta) {
                                             return `<div>
-                                                        <button type="button" onclick="edit_kamar('${full.id_kamar_penginapan}')" class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
-                                                        <button type="button" onclick="hapus_kamar('${full.id_kamar_penginapan}')" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
+                                                        <button type="button" onclick="edit_jadwal('${full.id_jadwal}')" class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
+                                                        <button type="button" onclick="hapus_jadwal('${full.id_jadwal}')" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
                                                     </div>`
                                         },
                                         className: 'text-center',
@@ -743,9 +742,9 @@
                                 ]
                             })
 
-                            // Fasilitas Kamar
-                            // $('#table_fasilitas_kamar').DataTable({
-                            //     data: tipe_kamar.fasilitas_kamar,
+                            // MENU
+                            // $('#table_menu').DataTable({
+                            //     data: menu,
                             //     lengthMenu: [
                             //         [3, 6, 9, 12, -1],
                             //         [3, 6, 9, 12, "All"],
@@ -759,7 +758,14 @@
                             //         },
                             //         {
                             //             render: function(data, type, full, meta) {
-                            //                 return full.nama_fasilitas
+                            //                 return full.nama_menu
+                            //             },
+                            //             className: 'text-center',
+                            //             width: '25%'
+                            //         },
+                            //         {
+                            //             render: function(data, type, full, meta) {
+                            //                 return full.harga
                             //             },
                             //             className: 'text-center',
                             //             width: '25%'
@@ -826,44 +832,44 @@
                             })
 
                             // ITEM
-                            $('#table_item').DataTable({
-                                data: item,
-                                lengthMenu: [
-                                    [3, 6, 9, 12, -1],
-                                    [3, 6, 9, 12, "All"],
-                                ],
-                                columns: [{
-                                        render: function(full, meta, data, type) {
-                                            return meta.row + 1
-                                        },
-                                        className: 'text-center',
-                                        width: '2%'
-                                    },
-                                    {
-                                        render: function(full, meta, data, type) {
-                                            return full.qr_code
-                                        }
-                                    },
-                                    {
-                                        render: function(full, meta, data, type) {
-                                            return full.audio1
-                                        }
-                                    },
-                                    {
-                                        render: function(full, meta, data, type) {
-                                            return full.keterangan
-                                        }
-                                    },
-                                    {
-                                        render: function(full, meta, data, type) {
-                                            return `<div>
-                                                        <button class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
-                                                        <button class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
-                                                    </div>`
-                                        }
-                                    }
-                                ]
-                            })
+                            // $('#table_item').DataTable({
+                            //     data: item,
+                            //     lengthMenu: [
+                            //         [3, 6, 9, 12, -1],
+                            //         [3, 6, 9, 12, "All"],
+                            //     ],
+                            //     columns: [{
+                            //             render: function(full, meta, data, type) {
+                            //                 return meta.row + 1
+                            //             },
+                            //             className: 'text-center',
+                            //             width: '2%'
+                            //         },
+                            //         {
+                            //             render: function(full, meta, data, type) {
+                            //                 return full.qr_code
+                            //             }
+                            //         },
+                            //         {
+                            //             render: function(full, meta, data, type) {
+                            //                 return full.audio1
+                            //             }
+                            //         },
+                            //         {
+                            //             render: function(full, meta, data, type) {
+                            //                 return full.keterangan
+                            //             }
+                            //         },
+                            //         {
+                            //             render: function(full, meta, data, type) {
+                            //                 return `<div>
+                            //                             <button class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
+                            //                             <button class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
+                            //                         </div>`
+                            //             }
+                            //         }
+                            //     ]
+                            // })
 
                         }
                     })
@@ -955,39 +961,37 @@
                 });
             }
 
-            function edit_kamar(id_kamar_penginapan) {
-                console.log(id_kamar_penginapan)
-                $('#editKamarPenginapanModal').modal('show');
+            function edit_menu(id_menu_kuliner) {
+                console.log(id_menu_kuliner)
+                $('#editMenuModal').modal('show');
                 $.ajax({
-                    url: 'http://localhost:8000/jenis_kamar/' + id_kamar_penginapan,
+                    url: 'http://localhost:8000/menu_kuliner/' + id_menu_kuliner,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(results) {
                         let data = results.data;
-                        $('#id_kamar_penginapan').val(data.id_kamar_penginapan);
-                        $('.penginapan_id').val(data.penginapan_id);
-                        $('#edit_tipe_kamar').val(data.tipe_kamar);
-                        $('#edit_kapasitas').val(data.kapasitas)
+                        $('#id_menu_kuliner').val(data.id_menu_kuliner);
+                        $('.kuliner_id').val(data.kuliner_id);
+                        $('#edit_menu_kuliner').val(data.nama_menu);
                         $('#edit_harga').val(data.harga);
-                        $('#edit_keterangan_kamar_penginapan').val(data.keterangan)
+                        $('#edit_keterangan_menu').val(data.keterangan)
                     }
                 })
             }
 
-            $('#submit_editKamar').on('click', function(e) {
+            $('#submit_editMenu').on('click', function(e) {
                 e.preventDefault();
                 let data = {
-                    id_kamar_penginapan: $('#id_kamar_penginapan').val(),
-                    penginapan_id: $(".penginapan_id").val(),
-                    tipe_kamar: $("#edit_tipe_kamar").val(),
-                    kapasitas: $("#edit_kapasitas").val(),
+                    id_menu_kuliner: $('#id_menu_kuliner').val(),
+                    kuliner_id: $(".kuliner_id").val(),
+                    nama_menu: $("#edit_menu_kuliner").val(),
                     harga: $("#edit_harga").val(),
-                    keterangan: $("#edit_keterangan_kamar_penginapan").val(),
+                    keterangan: $("#edit_keterangan_menu").val(),
                 };
                 console.log(data)
 
                 $.ajax({
-                    url: "http://localhost:8000/jenis_kamar",
+                    url: "http://localhost:8000/menu_kuliner",
                     data: data,
                     type: "PUT",
                     dataType: "JSON",
@@ -995,7 +999,7 @@
                         if (results.code != 200) {
                             error(results.message);
                         } else {
-                            success("Data kamar berhasil diubah");
+                            success("Data menu wisata kuliner berhasil diubah");
                             setTimeout(function() {
                                 location.reload();
                             }, 2000);
@@ -1005,9 +1009,9 @@
 
             })
 
-            function hapus_kamar(id_kamar_penginapan) {
+            function hapus_menu(id_menu_kuliner) {
                 Swal.fire({
-                    title: "Yakin ingin menghapus data kamar ?",
+                    title: "Yakin ingin menghapus data menu kuliner ?",
                     text: "Data menu yang sudah dihapus, tidak bisa dikembalikan lagi",
                     icon: "warning",
                     showCancelButton: true,
@@ -1018,17 +1022,17 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/jenis_kamar/",
+                            url: "http://localhost:8000/menu_kuliner/",
                             type: "DELETE",
                             data: {
-                                id_kamar_penginapan,
+                                id_menu_kuliner,
                             },
                             dataType: "JSON",
                             success: function(results) {
                                 if (results.code != 200) {
                                     error(results.message);
                                 } else {
-                                    success("Data kamar berhasil dihapus");
+                                    success("Data menu kuliner berhasil dihapus");
                                     setTimeout(function() {
                                         location.reload();
                                     }, 2000);
@@ -1116,4 +1120,4 @@
                 });
             }
         </script>
-        <script src="<?= base_url() ?>js/penginapan.js"></script>
+        <script src="<?= base_url() ?>js/oleh_oleh.js"></script>

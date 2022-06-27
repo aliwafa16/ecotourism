@@ -61,10 +61,10 @@ $(document).ready(function () {
 				render: function (data, type, full, meta) {
 					return `<div class="row align-items-center">
                     <div class="col-md-3 mt-2">
-                        <button type="button" onclick="detail_wisata('${full.id_wisata}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
+                        <button type="button" title="Detail wisata" onclick="detail_wisata('${full.id_wisata}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
                     </div>
                     <div class="col-md-3 mt-2">
-                        <button onclick="edit_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi edit_button btn-sm"><i class="fa fa-edit"></i></button>
+                        <button title="Edit wisata" onclick="edit_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi edit_button btn-sm"><i class="fa fa-edit"></i></button>
                     </div>
                     <div class="col-md-3 mt-2">
                         <button onclick="hapus_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi delete_button btn-sm"><i class="fa fa-trash"></i></button>

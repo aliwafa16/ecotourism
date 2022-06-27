@@ -61,7 +61,7 @@ $(document).ready(function () {
 			{
 				render: function (data, type, full, meta) {
 					return `
-					<div class="container">
+				
 					<div class="row align-items-center">
                     <div class="col-md-3 mt-2">
                         <button type="button" onclick="detail_penginapan('${full.id_penginapan}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
@@ -85,7 +85,7 @@ $(document).ready(function () {
                         <button onclick="item_penginapan('${full.id_penginapan}')" type="button" class="btn btn_aksi item_button btn-sm"><i class="fa fa-th-list"></i></button>
                     </div>
                 	</div>
-				    </div>`;
+				    `;
 				},
 				width: "15%",
 				className: "text-center",
