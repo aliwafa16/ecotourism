@@ -31,24 +31,21 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Selamat datang</h3>
-                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_login">
+                        <h3 class="mb-4 text-center">Ubah Kata Sandi</h3>
+                        <p class="text-center">Silahkan masukan kata sandi baru</p>
+                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_reset_password">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
-                                <p class="text-danger email_error"></p>
-                            </div>
-                            <div class="form-group">
-                                <input id="password" name="password" type="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
+                                <input type="password" class="form-control" placeholder="Kata sandi" required id="password" name="password" autocomplete="off">
                                 <p class="text-danger password_error"></p>
                             </div>
                             <div class="form-group">
-                                <button type="submit" id="btn_login" class="form-control btn submit px-3" style="background-color: #0093AB;">Masuk</button>
+                                <input type="password" class="form-control" placeholder="Ulangi kata sandi" required id="ulangi_password" name="ulangi_password" autocomplete="off">
+                                <p class="text-danger ulangi_passsword_error"></p>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="btn_reset_password" class="form-control btn submit px-3" style="background-color: #0093AB;">Ubah</button>
                             </div>
                         </form>
-                        <div class="d-flex">
-                            <p style="color:lightgray">Belum punya akun ?<a href="<?= base_url() ?>Auth/registrasi" class="font-weight-bold" style="color:white;"> Daftar</a> </p>
-                            <p class="ml-auto"><a href="<?= base_url() ?>Auth/lupa_password" class="font-weight-bold" style="color: white;">Lupa password</a></p>
-                        </div>
                     </div>
                     <!-- <div class="row justify-content-center">
                         <div class="col-lg-6 col-sm-6 text-center">
@@ -71,6 +68,67 @@
     <script src="<?= base_url('assets/auth/') ?>js/main.js"></script>
     <script src="<?= base_url() ?>js/auth.js"></script>
     <script src="<?= base_url('assets/jquery-validation/dist/') ?>jquery.validate.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            const pathArray = window.location.pathname.split("/");
+            const token = pathArray[4]
+            if (!token) {
+                location.href = base_url;
+            }
+        });
+
+        $('#btn_reset_password').on('click', function() {
+            const pathArray = window.location.pathname.split("/");
+            const token = pathArray[4]
+            $('#form_reset_password').validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: '#ulangi_password'
+                    },
+                    ulangi_password: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: '#password'
+                    }
+                },
+                messages: {
+                    password: {
+                        required: 'Kata sandi harus diisi !',
+                        minlength: 'Kata sandi minimal 5 karakter',
+                        equalTo: 'Kata sandi berbeda'
+                    },
+                    ulangi_password: {
+                        required: 'Konfirmasi kata sandi harus diisi !',
+                        minlength: 'Kata sandi minimal 5 karakter',
+                        equalTo: 'Konfirmasi kata sandi salah !'
+                    }
+                },
+                submitHandler: function(forms) {
+                    submitResetPasswordIsClick(token)
+                }
+            })
+        })
+
+        function submitResetPasswordIsClick(token) {
+
+            let data = {
+                reset_password: token,
+                password: $('#password').val()
+            }
+            $.ajax({
+                url: 'http://localhost:8000/auth/reset_password',
+                type: "POST",
+                data,
+                dataType: 'JSON',
+                success: function(results) {
+                    console.log(results)
+                }
+            })
+        }
+    </script>
 
 </body>
 

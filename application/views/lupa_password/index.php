@@ -31,23 +31,19 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Selamat datang</h3>
-                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_login">
+                        <h3 class="mb-4 text-center">Lupa password</h3>
+                        <p class="text-center">Silahkan masukan email untuk reset kata sandi</p>
+                        <form action="" class="signin-form" enctype="multipart/form-data" id="form_sendEmail">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Email" required id="email" name="email" autocomplete="off">
                                 <p class="text-danger email_error"></p>
                             </div>
                             <div class="form-group">
-                                <input id="password" name="password" type="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
-                                <p class="text-danger password_error"></p>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" id="btn_login" class="form-control btn submit px-3" style="background-color: #0093AB;">Masuk</button>
+                                <button type="submit" id="btn_sendEmail" class="form-control btn submit px-3" style="background-color: #0093AB;">Kirim</button>
                             </div>
                         </form>
                         <div class="d-flex">
-                            <p style="color:lightgray">Belum punya akun ?<a href="<?= base_url() ?>Auth/registrasi" class="font-weight-bold" style="color:white;"> Daftar</a> </p>
-                            <p class="ml-auto"><a href="<?= base_url() ?>Auth/lupa_password" class="font-weight-bold" style="color: white;">Lupa password</a></p>
+                            <p style="color:lightgray">Sudah punya akun ?<a href="<?= base_url() ?>Auth/" class="font-weight-bold" style="color:white;"> Masuk</a> </p>
                         </div>
                     </div>
                     <!-- <div class="row justify-content-center">

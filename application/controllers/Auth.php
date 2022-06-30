@@ -50,6 +50,16 @@ class Auth extends CI_Controller{
         $this->load->view('aktivasi/index');
     }
 
+    public function lupa_password()
+    {
+        $this->load->view('lupa_password/index');
+    }
+
+    public function reset_password()
+    {
+        $this->load->view('reset_password/index');
+    }
+
     public function logout(){
         $this->session->sess_destroy();
         redirect(base_url());
