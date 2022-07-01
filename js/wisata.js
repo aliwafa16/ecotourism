@@ -49,7 +49,7 @@ $(document).ready(function () {
 					}
 					return full.deskripsi_wisata == null ? "-" : full.deskripsi_wisata;
 				},
-				width: "39%",
+				width: "34%",
 			},
 			{
 				render: function (data, type, full, meta) {
@@ -59,34 +59,34 @@ $(document).ready(function () {
 			},
 			{
 				render: function (data, type, full, meta) {
-					return `<div class="row align-items-center">
-                    <div class="col-md-3 mt-2">
-                        <button type="button" title="Detail wisata" onclick="detail_wisata('${full.id_wisata}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
+					return `<div class="container">
+					<div class="row align-items-center">
+                    <div class="col-md-4">
+                        <button title="Edit wisata" onclick="edit_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi edit_button"><i class="fa fa-edit"></i></button>
                     </div>
-                    <div class="col-md-3 mt-2">
-                        <button title="Edit wisata" onclick="edit_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi edit_button btn-sm"><i class="fa fa-edit"></i></button>
+                    <div class="col-md-4">
+                        <button onclick="hapus_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi delete_button"><i class="fa fa-trash"></i></button>
                     </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="hapus_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi delete_button btn-sm"><i class="fa fa-trash"></i></button>
+					<div class="col-md-4">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+							<i class="fas fa-cogs"></i>
+						</button>
+						<div class="dropdown-menu" style="font-size:13px" aria-labelledby="dropdownMenu2">
+							<button class="dropdown-item" type="button" onclick="detail_wisata('${full.id_wisata}')">Detail</button>
+							<button class="dropdown-item" type="button" onclick="gambar_wisata('${full.id_wisata}')">Tambah Gambar</button>
+							<button class="dropdown-item" type="button" onclick="tiket_wisata('${full.id_wisata}')">Tambah Tiket</button>
+							<button class="dropdown-item" type="button" onclick="fasilitas_wisata('${full.id_wisata}')">Tambah Fasilitas</button>
+							<button class="dropdown-item" type="button" onclick="jadwal_wisata('${full.id_wisata}')">Tambah Jadwal</button>
+							<button class="dropdown-item" type="button" onclick="item_wisata('${full.id_wisata}')">Tambah Item</button>
+							
+						</div>
+						</div>
                     </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="gambar_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi gambar_button btn-sm"><i class="fa fa-camera"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="tiket_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi tiket_button btn-sm"><i class="fa fa-ticket-alt"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="fasilitas_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi fasilitas_button btn-sm"><i class="fa fa-landmark"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="jadwal_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi jadwal_button btn-sm"><i class="fa fa-calendar-alt"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="item_wisata('${full.id_wisata}')" type="button" class="btn btn_aksi item_button btn-sm"><i class="fa fa-th-list"></i></button>
-                    </div>
-                </div>`;
+					</div>
+					</div>`;
 				},
-				width: "15%",
+				width: "20%",
 				className: "text-center",
 			},
 		],

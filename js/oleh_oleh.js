@@ -50,7 +50,7 @@ $(document).ready(function () {
 						? "-"
 						: full.deskripsi_oleh_oleh;
 				},
-				width: "39%",
+				width: "34%",
 			},
 			{
 				render: function (data, type, full, meta) {
@@ -60,34 +60,35 @@ $(document).ready(function () {
 			},
 			{
 				render: function (data, type, full, meta) {
-					return `<div class="row align-items-center">
-                    <div class="col-md-3 mt-2">
-                        <button type="button" onclick="detail_oleh_oleh('${full.id_oleh_oleh}')" target="_blank" class="btn btn_aksi detail_button btn-sm"><i class="fas fa-info-circle"></i></button>
+					return `
+					<div class="container">
+					<div class="row align-items-center">
+                    <div class="col-md-4">
+                        <button onclick="edit_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi edit_button"><i class="fa fa-edit"></i></button>
                     </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="edit_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi edit_button btn-sm"><i class="fa fa-edit"></i></button>
+                    <div class="col-md-4">
+                        <button onclick="hapus_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi delete_button"><i class="fa fa-trash"></i></button>
                     </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="hapus_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi delete_button btn-sm"><i class="fa fa-trash"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="gambar_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi gambar_button btn-sm"><i class="fa fa-camera"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="menu_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi tiket_button btn-sm"><i class="fas fa-grip-horizontal"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="fasilitas_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi fasilitas_button btn-sm"><i class="fa fa-landmark"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="jadwal_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi jadwal_button btn-sm"><i class="fa fa-calendar-alt"></i></button>
-                    </div>
-                    <div class="col-md-3 mt-2">
-                        <button onclick="item_oleh_oleh('${full.id_oleh_oleh}')" type="button" class="btn btn_aksi item_button btn-sm"><i class="fa fa-th-list"></i></button>
-                    </div>
-                </div>`;
+					<div class="col-md-4">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+							<i class="fas fa-cogs"></i>
+						</button>
+						<div class="dropdown-menu" style="font-size:13px" aria-labelledby="dropdownMenu2">
+							<button class="dropdown-item" type="button" onclick="detail_oleh_oleh('${full.id_oleh_oleh}')">Detail</button>
+							<button class="dropdown-item" type="button" onclick="gambar_oleh_oleh('${full.id_oleh_oleh}')">Tambah Gambar</button>
+							<button class="dropdown-item" type="button" onclick="menu_oleh_oleh('${full.id_oleh_oleh}')">Tambah Menu</button>
+							<button class="dropdown-item" type="button" onclick="fasilitas_oleh_oleh('${full.id_oleh_oleh}')">Tambah Fasilitas</button>
+							<button class="dropdown-item" type="button" onclick="jadwal_oleh_oleh('${full.id_oleh_oleh}')">Tambah Jadwal</button>
+							<button class="dropdown-item" type="button" onclick="item_oleh_oleh('${full.id_oleh_oleh}')">Tambah Item</button>
+							
+						</div>
+						</div>
+					</div>
+                </div>
+				</div>`;
 				},
-				width: "15%",
+				width: "20%",
 				className: "text-center",
 			},
 		],
