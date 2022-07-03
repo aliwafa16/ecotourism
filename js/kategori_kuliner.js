@@ -1,6 +1,6 @@
 $(document).ready(function () {
-	var table = $("#table_kategori_wisata");
-	grid_kategori_wisata = table.DataTable({
+	var table = $("#table_kategori_kuliner");
+	grid_kategori_kuliner = table.DataTable({
 		// scrollX: true,
 		// scrollCollapse: true,
 		aaSorting: [],
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/kategori_wisata",
+			url: "http://localhost:8000/kategori_kuliner",
 			data: function (d) {
 				no = 0;
 			},
@@ -31,14 +31,14 @@ $(document).ready(function () {
 			},
 			{
 				render: function (data, type, full, meta) {
-					return full.kategori;
+					return full.jenis_kuliner;
 				},
 			},
 			{
 				render: function (data, type, full, meta) {
 					return `<div class="container">
-                        <button title="Edit wisata" onclick="edit('${full.id_kategori_wisata}')" type="button" class="btn btn_aksi edit_button"><i class="fa fa-edit"></i></button>
-                        <button onclick="hapus('${full.id_kategori_wisata}')" type="button" class="btn btn_aksi delete_button"><i class="fa fa-trash"></i></button>
+                        <button title="Edit wisata" onclick="edit('${full.id_kategori_kuliner}')" type="button" class="btn btn_aksi edit_button"><i class="fa fa-edit"></i></button>
+                        <button onclick="hapus('${full.id_kategori_kuliner}')" type="button" class="btn btn_aksi delete_button"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
 				className: "text-center",
@@ -51,9 +51,9 @@ $("#btn_addKategori").on("click", function (e) {
 	e.preventDefault();
 	tipe = "tambah";
 	$("#kategoriModal").modal("show");
-	$("#kategoriModalLabel").text("Tambah Kategori Wisata");
+	$("#kategoriModalLabel").text("Tambah Kategori kuliner");
 	$("#form_kategori")[0].reset();
-	$("#form_kategori label").text("Nama kategori wisata");
+	$("#form_kategori label").text("Nama kategori kuliner");
 	$("#btn_submitKategori").text("Tambah");
 	console.log("ok");
 });
@@ -64,15 +64,15 @@ $("#btn_submitKategori").on("click", function (e) {
 	let method = "";
 
 	if (tipe == "tambah") {
-		data.kategori = $("#kategori").val();
+		data.jenis_kuliner = $("#kategori").val();
 		method = "POST";
 	} else if (tipe == "ubah") {
-		data.kategori = $("#kategori").val();
-		data.id_kategori_wisata = $("#id_kategori").val();
+		data.jenis_kuliner = $("#kategori").val();
+		data.id_kategori_kuliner = $("#id_kategori").val();
 		method = "PUT";
 	}
 	$.ajax({
-		url: "http://localhost:8000/kategori_wisata",
+		url: "http://localhost:8000/kategori_kuliner",
 		type: method,
 		dataType: "JSON",
 		data,
@@ -81,7 +81,7 @@ $("#btn_submitKategori").on("click", function (e) {
 				error(results.message);
 			} else {
 				success(results.message);
-				grid_kategori_wisata.ajax.reload();
+				grid_kategori_kuliner.ajax.reload();
 				$("#kategoriModal").modal("hide");
 			}
 		},
@@ -90,26 +90,26 @@ $("#btn_submitKategori").on("click", function (e) {
 
 function edit(id) {
 	$("#kategoriModal").modal("show");
-	$("#kategoriModalLabel").text("Ubah Kategori Wisata");
+	$("#kategoriModalLabel").text("Ubah Kategori Kuliner");
 	$("#form_kategori")[0].reset();
-	$("#form_kategori label").text("Nama kategori wisata");
+	$("#form_kategori label").text("Nama kategori kuliner");
 	$("#btn_submitKategori").text("Ubah");
 	tipe = "ubah";
 
 	$.ajax({
-		url: "http://localhost:8000/kategori_wisata/" + id,
+		url: "http://localhost:8000/kategori_kuliner/" + id,
 		type: "GET",
 		dataType: "JSON",
 		success: function (result) {
-			$("#kategori").val(result.data.kategori);
-			$("#id_kategori").val(result.data.id_kategori_wisata);
+			$("#id_kategori").val(result.data.id_kategori_kuliner);
+			$("#kategori").val(result.data.jenis_kuliner);
 		},
 	});
 }
 
 function hapus(id) {
 	Swal.fire({
-		title: "Yakin ingin menghapus data kategori wisata ?",
+		title: "Yakin ingin menghapus data kategori kuliner ?",
 		text: "Data yang sudah dihapus, tidak bisa dikembalikan lagi",
 		icon: "warning",
 		showCancelButton: true,
@@ -120,10 +120,10 @@ function hapus(id) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/kategori_wisata/",
+				url: "http://localhost:8000/kategori_kuliner/",
 				type: "DELETE",
 				data: {
-					id_kategori_wisata: id,
+					id_kategori_kuliner: id,
 				},
 				dataType: "JSON",
 				success: function (results) {
@@ -131,13 +131,14 @@ function hapus(id) {
 						error(result.message);
 					} else {
 						success(results.message);
-						grid_kategori_wisata.ajax.reload();
+						grid_kategori_kuliner.ajax.reload();
 					}
 				},
 			});
 		}
 	});
 }
+
 function success(params) {
 	Swal.fire({
 		icon: "success",

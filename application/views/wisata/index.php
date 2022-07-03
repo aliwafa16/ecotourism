@@ -158,7 +158,7 @@
         </div>
 
         <!-- Modal Tiket -->
-        <div class="modal fade" id="tiketModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="tiketModalLabel" aria-hidden="true">
+        <div class="modal fade" id="tiketModal" tabindex="-1" aria-labelledby="tiketModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">

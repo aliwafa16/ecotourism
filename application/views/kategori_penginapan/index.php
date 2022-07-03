@@ -44,11 +44,11 @@
                                 <!-- <h6 class="card-title m-t-40"><i class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i> Table With
                                     Outside Padding</h6> -->
                                 <div class="table-responsive">
-                                    <table class="table table-hover" id="table_kategori_wisata" style="width:100%">
+                                    <table class="table table-hover" id="table_kategori_penginapan" style="width:100%">
                                         <thead>
                                             <tr class="text-center">
                                                 <th scope="col">No</th>
-                                                <th scope="col">Kategori wisata</th>
+                                                <th scope="col">Kategori penginapan</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
@@ -93,8 +93,8 @@
                     </div>
                     <div class="modal-body">
                         <form action="" id="form_kategori" enctype="multipart/form-data">
-                            <input type="hidden" id="id_kategori">
                             <div class="form-group">
+                                <input type="hidden" name="id_kategori" id="id_kategori">
                                 <label for="kategori"></label>
                                 <input type="text" name="kategori" class="form-control" id="kategori" placeholder="">
                             </div>
@@ -361,4 +361,4 @@
 
 
         </div>
-        <script src="<?= base_url() ?>js/kategori_wisata.js"></script>
+        <script src="<?= base_url() ?>js/kategori_penginapan.js"></script>
