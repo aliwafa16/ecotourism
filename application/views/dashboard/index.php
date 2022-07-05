@@ -25,34 +25,124 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
+
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mt-5 pb-3 d-flex align-items-center">
+                                    <span class="btn btn-success btn-circle d-flex align-items-center">
+                                        <i class="mdi mdi-tent text-light fs-4"></i>
+                                    </span>
+                                    <div class="ms-3">
+                                        <h2 class="mb-0 fw-bold">Wisata</h2>
+                                        <span class="text-muted fs-6">Jumlah lokasi wisata</span>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h3>33</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mt-5 pb-3 d-flex align-items-center">
+                                    <span class="btn btn-primary btn-circle d-flex align-items-center">
+                                        <i class="mdi mdi-bowl fs-4"></i>
+                                    </span>
+                                    <div class="ms-3">
+                                        <h2 class="mb-0 fw-bold">Kuliner</h2>
+                                        <span class="text-muted fs-6">Jumlah lokasi wisata kuliner</span>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h3>10</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mt-5 pb-3 d-flex align-items-center">
+                                    <span class="btn btn-info btn-circle d-flex align-items-center">
+                                        <i class="mdi mdi-hotel text-light fs-4"></i>
+                                    </span>
+                                    <div class="ms-3">
+                                        <h2 class="mb-0 fw-bold">Penginapan</h2>
+                                        <span class="text-muted fs-6">Jumlah lokasi penginapan</span>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h3>10</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mt-5 pb-3 d-flex align-items-center">
+                                    <span class="btn btn-warning btn-circle d-flex align-items-center">
+                                        <i class="mdi mdi-store fs-4"></i>
+                                    </span>
+                                    <div class="ms-3">
+                                        <h5 class="mb-0 fw-bold">Oleh-oleh</h5>
+                                        <span class="text-muted fs-6">Jumlah lokasi wisata oleh-oleh</span>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h3>15</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-md-flex align-items-center">
                                     <div>
-                                        <h4 class="card-title">Sales Summary</h4>
-                                        <h6 class="card-subtitle">Ample admin Vs Pixel admin</h6>
+                                        <h4 class="card-title">Rating wisata</h4>
+                                        <h6 class="card-subtitle"></h6>
                                     </div>
                                     <div class="ms-auto d-flex no-block align-items-center">
-                                        <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
-                                            <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
-                                            </li>
-                                            <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
-                                <div class="amp-pxl mt-4" style="height: 350px;">
+                                <div class="amp-pxl mt-4" id="chartwisata" style="height: 350px;">
                                     <div class="chartist-tooltip"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Rating kuliner</h4>
+                                        <!-- <h6 class="card-subtitle">Ample admin Vs Pixel admin</h6> -->
+                                    </div>
+                                    <div class="ms-auto d-flex no-block align-items-center">
+                                        <!-- <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
+                                            <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
+                                            </li>
+                                            <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                                <div class="amp-pxl mt-4" id="chartkuliner" style="height: 350px;">
+                                    <div class="chartist-tooltip"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Weekly Stats</h4>
@@ -117,6 +207,57 @@
                                     <div class="ms-auto">
                                         <span class="badge bg-light text-muted">+90%</span>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Rating penginapan</h4>
+                                        <!-- <h6 class="card-subtitle">Rating wisata</h6> -->
+                                    </div>
+                                    <div class="ms-auto d-flex no-block align-items-center">
+                                        <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
+                                            <!-- <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
+                                            </li>
+                                            <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="amp-pxl mt-4" id="chartpenginapan" style="height: 350px;">
+                                    <div class="chartist-tooltip"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Rating oleh-oleh</h4>
+                                        <!-- <h6 class="card-subtitle">Rating wisata</h6> -->
+                                    </div>
+                                    <div class="ms-auto d-flex no-block align-items-center">
+                                        <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
+                                            <!-- <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
+                                            </li>
+                                            <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="amp-pxl mt-4" id="chartoleholeh" style="height: 350px;">
+                                    <div class="chartist-tooltip"></div>
                                 </div>
                             </div>
                         </div>
@@ -401,4 +542,5 @@
             <!-- End footer -->
             <!-- ============================================================== -->
         </div>
+
         <script src="<?= base_url() ?>js/dashboard.js"></script>
