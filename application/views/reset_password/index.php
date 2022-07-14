@@ -124,9 +124,34 @@
                 data,
                 dataType: 'JSON',
                 success: function(results) {
-                    console.log(results)
+                    if (results.code != 200) {
+                        error(result.message);
+                    } else {
+                        success("Kata sandi berhasil diganti");
+                        setTimeout(function() {
+                            location.href = base_url;
+                        }, 2000);
+                    }
                 }
             })
+        }
+
+
+        function success(params) {
+            Swal.fire({
+                icon: "success",
+                title: "" + params,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+
+        function error(params) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "" + params,
+            });
         }
     </script>
 

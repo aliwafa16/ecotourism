@@ -109,6 +109,36 @@ function jadwal_wisata(id_wisata) {
 	$(".wisata_id").val(id_wisata);
 }
 
+function item_wisata(id_wisata) {
+	$("#itemModal").modal("show");
+	$("#form_item")[0].reset();
+	$(".wisata_id").val(id_wisata);
+}
+
+$("#submit_addItem").on("click", function (e) {
+	e.preventDefault();
+	let formdata = new FormData($("#form_item")[0]);
+	let id = $(".wisata_id").val();
+	console.log(id);
+	$.ajax({
+		url: "http://localhost:8000/item/" + id,
+		type: "POST",
+		data: formdata,
+		contentType: false,
+		processData: false,
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success(results.message);
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
 $("#submit_addJadwal").on("click", function (e) {
 	e.preventDefault();
 	let data = {
