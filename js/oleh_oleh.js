@@ -81,7 +81,6 @@ $(document).ready(function () {
 							<button class="dropdown-item" type="button" onclick="fasilitas_oleh_oleh('${full.id_oleh_oleh}')">Tambah Fasilitas</button>
 							<button class="dropdown-item" type="button" onclick="jadwal_oleh_oleh('${full.id_oleh_oleh}')">Tambah Jadwal</button>
 							<button class="dropdown-item" type="button" onclick="item_oleh_oleh('${full.id_oleh_oleh}')">Tambah Item</button>
-							
 						</div>
 						</div>
 					</div>
@@ -92,6 +91,36 @@ $(document).ready(function () {
 				className: "text-center",
 			},
 		],
+	});
+});
+
+function item_oleh_oleh(id_oleh_oleh) {
+	$("#itemModal").modal("show");
+	$("#form_item")[0].reset();
+	$(".oleh_oleh_id").val(id_oleh_oleh);
+}
+
+$("#submit_addItem").on("click", function (e) {
+	e.preventDefault();
+	let formdata = new FormData($("#form_item")[0]);
+	let id = $(".oleh_oleh_id").val();
+	console.log(id);
+	$.ajax({
+		url: "http://localhost:8000/item/" + id,
+		type: "POST",
+		data: formdata,
+		contentType: false,
+		processData: false,
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success(results.message);
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
 	});
 });
 
@@ -451,7 +480,7 @@ $("#submit_addMenu").on("click", function (e) {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/menu_kuliner",
+		url: "http://localhost:8000/item_oleh_oleh",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -459,7 +488,7 @@ $("#submit_addMenu").on("click", function (e) {
 			if (results.code != 200) {
 				error(results.message);
 			} else {
-				success("Data menu kuliner berhasil ditambahkan");
+				success("Data menu berhasil ditambahkan");
 				setTimeout(function () {
 					location.reload();
 				}, 2000);

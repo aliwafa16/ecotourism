@@ -269,7 +269,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="mb-0 fw-bold"><i class="fas fa-qrcode text-warning"></i> Item</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="tambahWisata()"><i class="fa fa-plus"></i>Tambah data</button>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="item_penginapan(document.querySelector('#id_penginapan').value)"><i class="fa fa-plus"></i>Tambah data</button>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="table_item" style="width:100%">
                                         <thead>
@@ -509,6 +509,42 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" id="submit_addMenu" class="btn btn-primary">Tambah</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item -->
+        <div class="modal fade" id="itemModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel">Tambah item</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_item">
+                                    <input type="hidden" class="wisata_id" name="id">
+                                    <div>
+                                        <div class="custom-file">
+                                            <div class="row">
+                                                <label class="custom-file-label" for="audio">File audio</label>
+                                                <input type="file" class="custom-file-input" id="audio" name="audio" accept=".mp3,audio/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="deskripsi">Deskripsi</label>
+                                        <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" rows="4"></textarea>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit_addItem" class="btn btn-primary">Tambah</button>
                     </div>
                     </form>
                 </div>
@@ -833,34 +869,41 @@
                                     [3, 6, 9, 12, "All"],
                                 ],
                                 columns: [{
-                                        render: function(full, meta, data, type) {
+                                        render: function(data, type, full, meta) {
                                             return meta.row + 1
                                         },
+                                        className: "text-center",
+                                        width: "5%",
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return `<a href="${full.qr_code}" download="${full.qr_code}"><img src="${full.qr_code}" alt=""></a>`
+                                        },
                                         className: 'text-center',
-                                        width: '2%'
+                                        width: '25%'
                                     },
                                     {
-                                        render: function(full, meta, data, type) {
-                                            return full.qr_code
-                                        }
+                                        render: function(data, type, full, meta) {
+                                            return full.audio
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
                                     },
                                     {
-                                        render: function(full, meta, data, type) {
-                                            return full.audio1
-                                        }
+                                        render: function(data, type, full, meta) {
+                                            return full.deskripsi
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
                                     },
                                     {
-                                        render: function(full, meta, data, type) {
-                                            return full.keterangan
-                                        }
-                                    },
-                                    {
-                                        render: function(full, meta, data, type) {
+                                        render: function(data, type, full, meta) {
                                             return `<div>
-                                                        <button class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
-                                                        <button class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
+                                                        <button type="button" onclick="hapus_item(${full.id_item_pariwisata})" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
                                                     </div>`
-                                        }
+                                        },
+                                        className: 'text-center',
+                                        width: '20%'
                                     }
                                 ]
                             })
@@ -1106,6 +1149,41 @@
                                     error(results.message);
                                 } else {
                                     success("Data fasilitas wisata berhasil dihapus");
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 2000);
+                                }
+                            },
+                        });
+                    }
+                });
+            }
+
+
+            function hapus_item(id_item_pariwisata) {
+                Swal.fire({
+                    title: "Yakin ingin menghapus data item ?",
+                    text: "Data item yang sudah dihapus, tidak bisa dikembalikan lagi",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batal",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "http://localhost:8000/item/",
+                            type: "DELETE",
+                            data: {
+                                id_item_pariwisata,
+                            },
+                            dataType: "JSON",
+                            success: function(results) {
+                                if (results.code != 200) {
+                                    error(results.message);
+                                } else {
+                                    success("Data item wisata berhasil dihapus");
                                     setTimeout(function() {
                                         location.reload();
                                     }, 2000);

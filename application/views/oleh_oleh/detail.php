@@ -173,7 +173,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="mb-0 fw-bold"><i class="fas fa-calendar-alt text-success"></i> Jadwal Operasional</h3>
-                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addJadwal" onclick="jadwal_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                        <button type="button" class="btn add_button m-2 btn-sm" id="btn_addJadwal" onclick="jadwal_oleh_oleh(document.querySelector('#id_oleh_oleh').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                         <div class="table-responsive">
                                             <table class="table table-hover" id="table_jadwal" style="width:100%">
@@ -205,7 +205,7 @@
                             <div class="card-body">
 
                                 <h3 class="mb-0 fw-bold"><i class="fas fa-pizza-slice text-primary"></i> Menu</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTiket" onclick="menu_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addTiket" onclick="menu_oleh_oleh(document.querySelector('#id_oleh_oleh').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="table_menu">
@@ -234,7 +234,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="mb-0 fw-bold"><i class="fas fa-landmark text-info"></i> Fasilitas</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="fasilitas_kuliner(document.querySelector('#id_kuliner').value)"><i class="fa fa-plus"></i>Tambah data</button>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="fasilitas_oleh_oleh(document.querySelector('#id_oleh_oleh').value)"><i class="fa fa-plus"></i>Tambah data</button>
 
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="table_fasilitas" style="width:100%">
@@ -262,7 +262,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="mb-0 fw-bold"><i class="fas fa-qrcode text-warning"></i> Item</h3>
-                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="tambahWisata()"><i class="fa fa-plus"></i>Tambah data</button>
+                                <button type="button" class="btn add_button m-2 btn-sm" id="btn_addWisata" onclick="item_oleh_oleh(document.querySelector('#id_oleh_oleh').value)"><i class="fa fa-plus"></i>Tambah data</button>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="table_item" style="width:100%">
                                         <thead>
@@ -374,7 +374,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form action="" method="POST" enctype="multipart/form-data" id="form_jadwal">
-                                    <input type="hidden" class="kuliner_id">
+                                    <input type="hidden" class="oleh_oleh_id">
                                     <div class="form-group">
                                         <label for="hari">Jadwal operasional</label>
                                         <input type="text" name="hari" class="form-control" id="hari" placeholder="Senin - Jumat">
@@ -426,7 +426,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form action="" method="POST" enctype="multipart/form-data" id="form_edit_jadwal">
-                                    <input type="hidden" class="kuliner_id">
+                                    <input type="hidden" class="oleh_oleh_id">
                                     <input type="hidden" id="id_jadwal">
                                     <div class="form-group">
                                         <label for="edit_hari">Jadwal operasional</label>
@@ -469,21 +469,21 @@
         </div>
 
 
-        <!-- Modal add menu -->
+        <!-- Modal Item Oleh-oleh -->
         <div class="modal fade" id="menuModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="menuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="menuModalLabel">Tambah Menu Kuliner</h5>
+                        <h5 class="modal-title" id="menuModalLabel">Tambah Item</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <form action="" method="POST" enctype="multipart/form-data" id="form_menu">
-                                    <input type="hidden" class="kuliner_id">
+                                    <input type="hidden" class="oleh_oleh_id">
                                     <div class="form-group">
-                                        <label for="menu_kuliner">Nama menu</label>
-                                        <input type="text" name="menu_kuliner" class="form-control" id="menu_kuliner" placeholder="Nama menu wisata kuliner...">
+                                        <label for="nama_item">Nama item</label>
+                                        <input type="text" name="nama_item" class="form-control" id="nama_item" placeholder="Nama item oleh-oleh...">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -499,8 +499,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="keterangan_menu">Keterangan</label>
-                                        <textarea class="form-control" name="keterangan_menu" id="keterangan_menu" rows="3"></textarea>
+                                        <label for="keterangan_oleholeh">Keterangan</label>
+                                        <textarea class="form-control" name="keterangan_oleholeh" id="keterangan_oleholeh" rows="3"></textarea>
                                     </div>
                             </div>
                         </div>
@@ -515,22 +515,22 @@
         </div>
 
 
-        <!-- Modal edit menu -->
+        <!-- Modal edit Item Oleh-oleh -->
         <div class="modal fade" id="editMenuModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editMenuModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editMenuModalLabel">Edit Menu Kuliner</h5>
+                        <h5 class="modal-title" id="editMenuModalLabel">Edit Item</h5>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="edit_form_menu">
-                                    <input type="hidden" id="id_menu_kuliner">
-                                    <input type="hidden" class="kuliner_id">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_menu">
+                                    <input type="hidden" class="oleh_oleh_id">
+                                    <input type="hidden" id="id_item_oleh_oleh">
                                     <div class="form-group">
-                                        <label for="edit_menu_kuliner">Nama menu</label>
-                                        <input type="text" name="edit_menu_kuliner" class="form-control" id="edit_menu_kuliner" placeholder="Nama menu wisata kuliner...">
+                                        <label for="edit_nama_item">Nama item</label>
+                                        <input type="text" name="edit_nama_item" class="form-control" id="edit_nama_item" placeholder="Nama item oleh-oleh...">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -546,8 +546,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="edit_keterangan_menu">Keterangan</label>
-                                        <textarea class="form-control" name="edit_keterangan_menu" id="edit_keterangan_menu" rows="3"></textarea>
+                                        <label for="edit_keterangan_oleholeh">Keterangan</label>
+                                        <textarea class="form-control" name="edit_keterangan_oleholeh" id="edit_keterangan_oleholeh" rows="3"></textarea>
                                     </div>
                             </div>
                         </div>
@@ -561,6 +561,7 @@
             </div>
         </div>
 
+
         <!-- Modal add fasilitas -->
         <div class="modal fade" id="fasilitasModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="fasilitasModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -572,7 +573,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form action="" method="POST" enctype="multipart/form-data" id="form_fasilitas">
-                                    <input type="hidden" class="wisata_id">
+                                    <input type="hidden" class="oleh_oleh_id">
                                     <div class="form-group">
                                         <label for="fasilitas">Fasilitas Wisata</label>
                                         <input type="text" name="fasilitas" class="form-control" id="fasilitas" placeholder="Nama fasilitas wisata...">
@@ -603,8 +604,8 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="" method="POST" enctype="multipart/form-data" id="edit_form_fasilitas">
-                                    <input type="hidden" class="wisata_id">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_fasilitas">
+                                    <input type="hidden" class="oleh_oleh_id">
                                     <input type="hidden" id="id_fasilitas">
                                     <div class="form-group">
                                         <label for="edit_fasilitas">Fasilitas Wisata</label>
@@ -620,6 +621,42 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" id="submit_editFasilitas" class="btn btn-primary">Ubah</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Item -->
+        <div class="modal fade" id="itemModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel">Tambah item</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_item">
+                                    <input type="hidden" class="wisata_id" name="id">
+                                    <div>
+                                        <div class="custom-file">
+                                            <div class="row">
+                                                <label class="custom-file-label" for="audio">File audio</label>
+                                                <input type="file" class="custom-file-input" id="audio" name="audio" accept=".mp3,audio/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="deskripsi">Deskripsi</label>
+                                        <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" rows="4"></textarea>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit_addItem" class="btn btn-primary">Tambah</button>
                     </div>
                     </form>
                 </div>
@@ -642,6 +679,7 @@
                             let jadwal = oleh_oleh.jadwal
                             let fasilitas = oleh_oleh.fasilitas
                             let item = oleh_oleh.item
+                            let item_oleh_oleh = oleh_oleh.item_oleh_oleh
 
 
                             console.log(oleh_oleh)
@@ -743,52 +781,52 @@
                             })
 
                             // MENU
-                            // $('#table_menu').DataTable({
-                            //     data: menu,
-                            //     lengthMenu: [
-                            //         [3, 6, 9, 12, -1],
-                            //         [3, 6, 9, 12, "All"],
-                            //     ],
-                            //     columns: [{
-                            //             render: function(data, type, full, meta) {
-                            //                 return meta.row + 1;
-                            //             },
-                            //             className: "text-center",
-                            //             width: "5%",
-                            //         },
-                            //         {
-                            //             render: function(data, type, full, meta) {
-                            //                 return full.nama_menu
-                            //             },
-                            //             className: 'text-center',
-                            //             width: '25%'
-                            //         },
-                            //         {
-                            //             render: function(data, type, full, meta) {
-                            //                 return full.harga
-                            //             },
-                            //             className: 'text-center',
-                            //             width: '25%'
-                            //         },
-                            //         {
-                            //             render: function(data, type, full, meta) {
-                            //                 return full.keterangan
-                            //             },
-                            //             className: 'text-center',
-                            //             width: '25%'
-                            //         },
-                            //         {
-                            //             render: function(data, type, full, meta) {
-                            //                 return `<div>
-                            //                             <button type="button" onclick="edit_menu('${full.id_menu_kuliner}')" class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
-                            //                             <button type="button" onclick="hapus_menu('${full.id_menu_kuliner}')" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
-                            //                         </div>`
-                            //             },
-                            //             className: 'text-center',
-                            //             width: '20%'
-                            //         }
-                            //     ]
-                            // })
+                            $('#table_menu').DataTable({
+                                data: item_oleh_oleh,
+                                lengthMenu: [
+                                    [3, 6, 9, 12, -1],
+                                    [3, 6, 9, 12, "All"],
+                                ],
+                                columns: [{
+                                        render: function(data, type, full, meta) {
+                                            return meta.row + 1;
+                                        },
+                                        className: "text-center",
+                                        width: "5%",
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return full.nama_item
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return full.harga
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return full.keterangan
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return `<div>
+                                                        <button type="button" onclick="edit_menu('${full.id_item_oleh_oleh}')" class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
+                                                        <button type="button" onclick="hapus_menu('${full.id_item_oleh_oleh}')" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
+                                                    </div>`
+                                        },
+                                        className: 'text-center',
+                                        width: '20%'
+                                    }
+                                ]
+                            })
 
                             // FASILITAS
                             $('#table_fasilitas').DataTable({
@@ -832,44 +870,51 @@
                             })
 
                             // ITEM
-                            // $('#table_item').DataTable({
-                            //     data: item,
-                            //     lengthMenu: [
-                            //         [3, 6, 9, 12, -1],
-                            //         [3, 6, 9, 12, "All"],
-                            //     ],
-                            //     columns: [{
-                            //             render: function(full, meta, data, type) {
-                            //                 return meta.row + 1
-                            //             },
-                            //             className: 'text-center',
-                            //             width: '2%'
-                            //         },
-                            //         {
-                            //             render: function(full, meta, data, type) {
-                            //                 return full.qr_code
-                            //             }
-                            //         },
-                            //         {
-                            //             render: function(full, meta, data, type) {
-                            //                 return full.audio1
-                            //             }
-                            //         },
-                            //         {
-                            //             render: function(full, meta, data, type) {
-                            //                 return full.keterangan
-                            //             }
-                            //         },
-                            //         {
-                            //             render: function(full, meta, data, type) {
-                            //                 return `<div>
-                            //                             <button class="btn btn-info btn-sm"><i class="fa fa-edit text-light"></i></button>
-                            //                             <button class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
-                            //                         </div>`
-                            //             }
-                            //         }
-                            //     ]
-                            // })
+                            $('#table_item').DataTable({
+                                data: item,
+                                lengthMenu: [
+                                    [3, 6, 9, 12, -1],
+                                    [3, 6, 9, 12, "All"],
+                                ],
+                                columns: [{
+                                        render: function(data, type, full, meta) {
+                                            return meta.row + 1
+                                        },
+                                        className: "text-center",
+                                        width: "5%",
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return `<a href="${full.qr_code}" download="${full.qr_code}"><img src="${full.qr_code}" alt=""></a>`
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return full.audio
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return full.deskripsi
+                                        },
+                                        className: 'text-center',
+                                        width: '25%'
+                                    },
+                                    {
+                                        render: function(data, type, full, meta) {
+                                            return `<div>
+                                                        <button type="button" onclick="hapus_item(${full.id_item_pariwisata})" class="btn btn-danger btn-sm"><i class="fa fa-times text-light"></i></button>
+                                                    </div>`
+                                        },
+                                        className: 'text-center',
+                                        width: '20%'
+                                    }
+                                ]
+                            })
 
                         }
                     })
@@ -881,211 +926,8 @@
                 }
             })
 
-            function edit_jadwal(id_jadwal) {
-                $('#editJadwalModal').modal('show');
-                $.ajax({
-                    url: 'http://localhost:8000/jadwal/' + id_jadwal,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function(results) {
-                        let data = results.data;
-                        $('#id_jadwal').val(data.id_jadwal);
-                        $('.kuliner_id').val(data.id_pariwisata);
-                        $('#edit_hari').val(data.hari);
-                        $('#edit_jam_buka').val(data.jam_buka);
-                        $('#edit_jam_tutup').val(data.jam_tutup);
-                        $('#edit_keterangan_jadwal').val(data.keterangan);
-                    }
-                })
-            }
 
-            $('#submit_editJadwal').on('click', function(e) {
-                e.preventDefault()
-                let data = {
-                    id_jadwal: $('#id_jadwal').val(),
-                    id_pariwisata: $('.kuliner_id').val(),
-                    hari: $("#edit_hari").val(),
-                    jam_buka: $("#edit_jam_buka").val(),
-                    jam_tutup: $("#edit_jam_tutup").val(),
-                    keterangan: $("#edit_keterangan_jadwal").val(),
-                }
-                $.ajax({
-                    url: 'http://localhost:8000/jadwal',
-                    type: 'PUT',
-                    dataType: 'JSON',
-                    data: data,
-                    success: function(results) {
-                        if (results.code != 200) {
-                            error(result.message);
-                        } else {
-                            success("Data jadwal wisata kuliner berhasil diubah");
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
-                    }
-                })
-            })
-
-            function hapus_jadwal(id_jadwal) {
-                Swal.fire({
-                    title: "Yakin ingin menghapus data jadwal ?",
-                    text: "Data jadwal yang sudah dihapus, tidak bisa dikembalikan lagi",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Hapus",
-                    cancelButtonText: "Batal",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: "http://localhost:8000/jadwal/",
-                            type: "DELETE",
-                            data: {
-                                id_jadwal,
-                            },
-                            dataType: "JSON",
-                            success: function(results) {
-                                if (results.code != 200) {
-                                    error(result.message);
-                                } else {
-                                    success("Data jadwal wisata kuliner berhasil dihapus");
-                                    setTimeout(function() {
-                                        location.reload();
-                                    }, 2000);
-                                }
-                            },
-                        });
-                    }
-                });
-            }
-
-            function edit_menu(id_menu_kuliner) {
-                console.log(id_menu_kuliner)
-                $('#editMenuModal').modal('show');
-                $.ajax({
-                    url: 'http://localhost:8000/menu_kuliner/' + id_menu_kuliner,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function(results) {
-                        let data = results.data;
-                        $('#id_menu_kuliner').val(data.id_menu_kuliner);
-                        $('.kuliner_id').val(data.kuliner_id);
-                        $('#edit_menu_kuliner').val(data.nama_menu);
-                        $('#edit_harga').val(data.harga);
-                        $('#edit_keterangan_menu').val(data.keterangan)
-                    }
-                })
-            }
-
-            $('#submit_editMenu').on('click', function(e) {
-                e.preventDefault();
-                let data = {
-                    id_menu_kuliner: $('#id_menu_kuliner').val(),
-                    kuliner_id: $(".kuliner_id").val(),
-                    nama_menu: $("#edit_menu_kuliner").val(),
-                    harga: $("#edit_harga").val(),
-                    keterangan: $("#edit_keterangan_menu").val(),
-                };
-                console.log(data)
-
-                $.ajax({
-                    url: "http://localhost:8000/menu_kuliner",
-                    data: data,
-                    type: "PUT",
-                    dataType: "JSON",
-                    success: function(results) {
-                        if (results.code != 200) {
-                            error(results.message);
-                        } else {
-                            success("Data menu wisata kuliner berhasil diubah");
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
-                    },
-                });
-
-            })
-
-            function hapus_menu(id_menu_kuliner) {
-                Swal.fire({
-                    title: "Yakin ingin menghapus data menu kuliner ?",
-                    text: "Data menu yang sudah dihapus, tidak bisa dikembalikan lagi",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Hapus",
-                    cancelButtonText: "Batal",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: "http://localhost:8000/menu_kuliner/",
-                            type: "DELETE",
-                            data: {
-                                id_menu_kuliner,
-                            },
-                            dataType: "JSON",
-                            success: function(results) {
-                                if (results.code != 200) {
-                                    error(results.message);
-                                } else {
-                                    success("Data menu kuliner berhasil dihapus");
-                                    setTimeout(function() {
-                                        location.reload();
-                                    }, 2000);
-                                }
-                            },
-                        });
-                    }
-                });
-            }
-
-
-            function edit_fasilitas(id_fasilitas) {
-                $('#editFasilitasModal').modal('show');
-                $.ajax({
-                    url: 'http://localhost:8000/fasilitas/' + id_fasilitas,
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function(results) {
-                        let data = results.data;
-                        $('#id_fasilitas').val(data.id_fasilitas);
-                        $('.wisata_id').val(data.id_pariwisata);
-                        $('#edit_fasilitas').val(data.nama_fasilitas);
-                        $('#edit_keterangan_fasilitas').val(data.keterangan)
-                    }
-                })
-            }
-
-            $('#submit_editFasilitas').on('click', function(e) {
-                e.preventDefault();
-                let data = {
-                    id_fasilitas: $('#id_fasilitas').val(),
-                    id_pariwisata: $(".wisata_id").val(),
-                    nama_fasilitas: $("#edit_fasilitas").val(),
-                    keterangan: $("#edit_keterangan_fasilitas").val(),
-                };
-                $.ajax({
-                    url: "http://localhost:8000/fasilitas",
-                    data: data,
-                    type: "PUT",
-                    dataType: "JSON",
-                    success: function(results) {
-                        if (results.code != 200) {
-                            error(results.message);
-                        } else {
-                            success("Data fasilitas wisata berhasil diubah");
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        }
-                    },
-                });
-            })
-
+            // Fasilitas
             function hapus_fasilitas(id_fasilitas) {
                 Swal.fire({
                     title: "Yakin ingin menghapus data fasilitas ?",
@@ -1110,6 +952,249 @@
                                     error(results.message);
                                 } else {
                                     success("Data fasilitas wisata berhasil dihapus");
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 2000);
+                                }
+                            },
+                        });
+                    }
+                });
+            }
+
+            function edit_fasilitas(id_fasilitas) {
+                $('#editFasilitasModal').modal('show');
+                $.ajax({
+                    url: 'http://localhost:8000/fasilitas/' + id_fasilitas,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(results) {
+                        let data = results.data;
+                        $('#id_fasilitas').val(data.id_fasilitas);
+                        $('.oleh_oleh_id').val(data.id_pariwisata);
+                        $('#edit_fasilitas').val(data.nama_fasilitas);
+                        $('#edit_keterangan_fasilitas').val(data.keterangan)
+                    }
+                })
+            }
+
+            $('#submit_editFasilitas').on('click', function(e) {
+                e.preventDefault();
+                let data = {
+                    id_fasilitas: $('#id_fasilitas').val(),
+                    id_pariwisata: $(".oleh_oleh_id").val(),
+                    nama_fasilitas: $("#edit_fasilitas").val(),
+                    keterangan: $("#edit_keterangan_fasilitas").val(),
+                };
+                $.ajax({
+                    url: "http://localhost:8000/fasilitas",
+                    data: data,
+                    type: "PUT",
+                    dataType: "JSON",
+                    success: function(results) {
+                        if (results.code != 200) {
+                            error(results.message);
+                        } else {
+                            success("Data fasilitas wisata berhasil diubah");
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        }
+                    },
+                });
+            })
+
+
+            // Jadwal
+            function hapus_jadwal(id_jadwal) {
+                Swal.fire({
+                    title: "Yakin ingin menghapus data jadwal ?",
+                    text: "Data jadwal yang sudah dihapus, tidak bisa dikembalikan lagi",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batal",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "http://localhost:8000/jadwal/",
+                            type: "DELETE",
+                            data: {
+                                id_jadwal,
+                            },
+                            dataType: "JSON",
+                            success: function(results) {
+                                if (results.code != 200) {
+                                    error(result.message);
+                                } else {
+                                    success("Data jadwal wisata berhasil dihapus");
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 2000);
+                                }
+                            },
+                        });
+                    }
+                });
+            }
+
+            function edit_jadwal(id_jadwal) {
+                $('#editJadwalModal').modal('show');
+                $.ajax({
+                    url: 'http://localhost:8000/jadwal/' + id_jadwal,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(results) {
+                        let data = results.data;
+                        $('#id_jadwal').val(data.id_jadwal);
+                        $('.oleh_oleh_id').val(data.id_pariwisata);
+                        $('#edit_hari').val(data.hari);
+                        $('#edit_jam_buka').val(data.jam_buka);
+                        $('#edit_jam_tutup').val(data.jam_tutup);
+                        $('#edit_keterangan_jadwal').val(data.keterangan);
+                    }
+                })
+            }
+
+            $('#submit_editJadwal').on('click', function(e) {
+                e.preventDefault()
+                let data = {
+                    id_jadwal: $('#id_jadwal').val(),
+                    id_pariwisata: $('.oleh_oleh_id').val(),
+                    hari: $("#edit_hari").val(),
+                    jam_buka: $("#edit_jam_buka").val(),
+                    jam_tutup: $("#edit_jam_tutup").val(),
+                    keterangan: $("#edit_keterangan_jadwal").val(),
+                }
+                $.ajax({
+                    url: 'http://localhost:8000/jadwal',
+                    type: 'PUT',
+                    dataType: 'JSON',
+                    data: data,
+                    success: function(results) {
+                        if (results.code != 200) {
+                            error(result.message);
+                        } else {
+                            success("Data jadwal wisata berhasil diubah");
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        }
+                    }
+                })
+            })
+
+
+            // Menu
+            function hapus_menu(id_item_oleh_oleh) {
+                Swal.fire({
+                    title: "Yakin ingin menghapus data ?",
+                    text: "Data menu yang sudah dihapus, tidak bisa dikembalikan lagi",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batal",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "http://localhost:8000/item_oleh_oleh/",
+                            type: "DELETE",
+                            data: {
+                                id_item_oleh_oleh,
+                            },
+                            dataType: "JSON",
+                            success: function(results) {
+                                if (results.code != 200) {
+                                    error(results.message);
+                                } else {
+                                    success("Data berhasil dihapus");
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 2000);
+                                }
+                            },
+                        });
+                    }
+                });
+            }
+
+            function edit_menu(id_item_oleh_oleh) {
+                console.log(id_item_oleh_oleh)
+                $('#editMenuModal').modal('show');
+                $.ajax({
+                    url: 'http://localhost:8000/item_oleh_oleh/' + id_item_oleh_oleh,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(results) {
+                        let data = results.data;
+                        $('#id_item_oleh_oleh').val(data.id_item_oleh_oleh);
+                        $('.oleh_oleh_id').val(data.oleh_oleh_id);
+                        $('#edit_nama_item').val(data.nama_item);
+                        $('#edit_harga').val(data.harga);
+                        $('#edit_keterangan_oleholeh').val(data.keterangan)
+                    }
+                })
+            }
+
+            $('#submit_editMenu').on('click', function(e) {
+                e.preventDefault();
+                let data = {
+                    id_item_oleh_oleh: $('#id_item_oleh_oleh').val(),
+                    oleh_oleh_id: $(".oleh_oleh_id").val(),
+                    nama_item: $("#edit_nama_item").val(),
+                    harga: $("#edit_harga").val(),
+                    keterangan: $("#edit_keterangan_oleholeh").val(),
+                };
+                console.log(data)
+
+                $.ajax({
+                    url: "http://localhost:8000/item_oleh_oleh",
+                    data: data,
+                    type: "PUT",
+                    dataType: "JSON",
+                    success: function(results) {
+                        if (results.code != 200) {
+                            error(results.message);
+                        } else {
+                            success("Data menu berhasil diubah");
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        }
+                    },
+                });
+
+            })
+
+
+            function hapus_item(id_item_pariwisata) {
+                Swal.fire({
+                    title: "Yakin ingin menghapus data item ?",
+                    text: "Data item yang sudah dihapus, tidak bisa dikembalikan lagi",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batal",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "http://localhost:8000/item/",
+                            type: "DELETE",
+                            data: {
+                                id_item_pariwisata,
+                            },
+                            dataType: "JSON",
+                            success: function(results) {
+                                if (results.code != 200) {
+                                    error(results.message);
+                                } else {
+                                    success("Data item wisata berhasil dihapus");
                                     setTimeout(function() {
                                         location.reload();
                                     }, 2000);

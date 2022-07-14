@@ -91,6 +91,37 @@ $(document).ready(function () {
 	});
 });
 
+
+function item_kuliner(id_kuliner) {
+	$("#itemModal").modal("show");
+	$("#form_item")[0].reset();
+	$(".kuliner_id").val(id_kuliner);
+}
+
+$("#submit_addItem").on("click", function (e) {
+	e.preventDefault();
+	let formdata = new FormData($("#form_item")[0]);
+	let id = $(".kuliner_id").val();
+	console.log(id);
+	$.ajax({
+		url: "http://localhost:8000/item/" + id,
+		type: "POST",
+		data: formdata,
+		contentType: false,
+		processData: false,
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success(results.message);
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
 function jadwal_kuliner(id_kuliner) {
 	$("#jadwalModal").modal("show");
 	$("#form_jadwal")[0].reset();

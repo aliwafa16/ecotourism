@@ -95,6 +95,36 @@ $(document).ready(function () {
 	});
 });
 
+function item_penginapan(id_penginapan) {
+	$("#itemModal").modal("show");
+	$("#form_item")[0].reset();
+	$(".penginapan_id").val(id_penginapan);
+}
+
+$("#submit_addItem").on("click", function (e) {
+	e.preventDefault();
+	let formdata = new FormData($("#form_item")[0]);
+	let id = $(".penginapan_id").val();
+	console.log(id);
+	$.ajax({
+		url: "http://localhost:8000/item/" + id,
+		type: "POST",
+		data: formdata,
+		contentType: false,
+		processData: false,
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success(results.message);
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
 function edit_penginapan(id_penginapan) {
 	localStorage.setItem("id_penginapan", id_penginapan);
 	location.href = base_url + "Penginapan/edit";

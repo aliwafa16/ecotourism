@@ -233,5 +233,41 @@
             </div>
         </div>
 
+        <!-- Modal Item -->
+        <div class="modal fade" id="itemModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="itemModalLabel">Tambah item</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_item">
+                                    <input type="hidden" class="kuliner_id" name="id">
+                                    <div>
+                                        <div class="custom-file">
+                                            <div class="row">
+                                                <label class="custom-file-label" for="audio">File audio</label>
+                                                <input type="file" class="custom-file-input" id="audio" name="audio" accept=".mp3,audio/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="deskripsi">Deskripsi</label>
+                                        <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" rows="4"></textarea>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit_addItem" class="btn btn-primary">Tambah</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
         <script src="<?= base_url() ?>js/kuliner.js"></script>
