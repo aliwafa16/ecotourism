@@ -293,48 +293,9 @@
                 <div class="row">
                     <h3 class="text-center"><i class="fas fa-images text-danger"></i> Galeri</h3>
                     <div class="col-12">
-                        <button type="button" class="btn add_button m-2 btn-sm float-center"><i class="fas fa-plus"></i> Tambah data</button>
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="<?= base_url('assets/backend/assets/images/') ?>1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="<?= base_url('assets/backend/assets/images/') ?>1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="<?= base_url('assets/backend/assets/images/') ?>1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="<?= base_url('assets/backend/assets/images/') ?>1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img src="<?= base_url('assets/backend/assets/images/') ?>1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <button type="button" class="btn add_button m-2 btn-sm float-center" onclick="gambar_wisata(document.querySelector('#id_wisata').value)"><i class="fas fa-plus"></i> Tambah data</button>
+                        <div class="row justify-content-center gambar_grid">
+
                         </div>
                     </div>
                 </div>
@@ -665,6 +626,84 @@
             </div>
         </div>
 
+        <!-- Modal Gambar -->
+        <div class="modal fade" id="gambarModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="gambarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="gambarModalLabel">Tambah gambar</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_gambar">
+                                    <input type="hidden" class="wisata_id" name="id_pariwisata">
+                                    <input type="hidden" name="tanggal" class="tanggal">
+                                    <div>
+                                        <div class="custom-file">
+                                            <div class="row">
+                                                <label class="custom-file-label" for="gambar">Gambar</label>
+                                                <input type="file" class="custom-file-input" id="gambar" name="gambar" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="keterangan">Keterangan</label>
+                                        <textarea class="form-control keterangan" name="keterangan" id="keterangan" rows="4"></textarea>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit_addGambar" class="btn btn-primary">Tambah</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal edit gambar -->
+        <div class="modal fade" id="editgambarModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="editgambarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editgambarModalLabel">Edit gambar</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="" method="POST" enctype="multipart/form-data" id="edit_form_gambar">
+                                    <input type="hidden" id="id_gambar" name="id_gambar">
+                                    <input type="hidden" class="wisata_id" name="id_pariwisata">
+                                    <input type="hidden" name="tanggal" class="tanggal">
+                                    <div>
+                                        <div class="custom-file">
+                                            <div class="row">
+                                                <label class="custom-file-label" for="gambar">Gambar</label>
+                                                <input type="file" class="custom-file-input" id="gambar" name="gambar" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <img src="" style="width: 100px;" alt="">
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="edit_keterangan">Keterangan</label>
+                                        <textarea class="form-control keterangan" name="keterangan" id="edit_keterangan" rows="4"></textarea>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit_editGambar" class="btn btn-primary">Ubah</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
 
         <script>
@@ -684,6 +723,7 @@
                             let tiket = wisata.tiket
                             let fasilitas = wisata.fasilitas
                             let item = wisata.item
+                            let gambar = wisata.gambar
 
                             console.log(wisata)
 
@@ -784,6 +824,7 @@
                                 ]
                             })
 
+                            // TIKET
                             $('#table_tiket').DataTable({
                                 data: tiket,
                                 lengthMenu: [
@@ -831,6 +872,7 @@
                                 ]
                             })
 
+                            // FASILITAS
                             $('#table_fasilitas').DataTable({
                                 data: fasilitas,
                                 lengthMenu: [
@@ -871,6 +913,7 @@
                                 ]
                             })
 
+                            // ITEM
                             $('#table_item').DataTable({
                                 data: item,
                                 lengthMenu: [
@@ -916,6 +959,22 @@
                                     }
                                 ]
                             })
+
+
+                            // GAMBAR
+                            gambar.forEach(element => {
+                                $('.gambar_grid').append(`
+                                <div class="col-md-4">
+                                <div class="card">
+                                    <img src="http://localhost:8000/${element.gambar}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text">${element.keterangan != null ?element.keterangan : '-' }</p>
+                                        <button class="btn btn-sm btn-info" type="button" onclick="edit_gambar(${element.id_gambar})"><i class="fas fa-edit text-light"></i></button>
+                                        <button class="btn btn-sm btn-danger" type="button" onclick="hapus_gambar(${element.id_gambar})"><i class="fas fa-times text-light"></i></button>
+                                    </div>
+                                </div>
+                            </div>`)
+                            });
 
 
 
@@ -1172,6 +1231,7 @@
             }
 
 
+            // ITEM
             function hapus_item(id_item_pariwisata) {
                 Swal.fire({
                     title: "Yakin ingin menghapus data item ?",
@@ -1221,6 +1281,82 @@
                     }
                 })
             }
+
+            // GAMBAR
+            function hapus_gambar(id_gambar) {
+                Swal.fire({
+                    title: "Yakin ingin menghapus data ?",
+                    text: "Data yang sudah dihapus, tidak bisa dikembalikan lagi",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batal",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "http://localhost:8000/gambar/",
+                            type: "DELETE",
+                            data: {
+                                id_gambar,
+                            },
+                            dataType: "JSON",
+                            success: function(results) {
+                                if (results.code != 200) {
+                                    error(results.message);
+                                } else {
+                                    success("Data berhasil dihapus");
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 2000);
+                                }
+                            },
+                        });
+                    }
+                });
+            }
+
+            function edit_gambar(id_gambar) {
+                $('#editgambarModal').modal('show');
+                $.ajax({
+                    url: 'http://localhost:8000/gambar/' + id_gambar,
+                    type: 'GET',
+                    dataType: 'JSON',
+                    success: function(results) {
+                        let data = results.data;
+                        $("#edit_form_gambar img").attr('src', `http://localhost:8000/${data.gambar}`)
+                        $("#edit_keterangan").val(data.keterangan)
+                        $(".wisata_id").val(data.id_pariwisata)
+                        $("#id_gambar").val(data.id_gambar)
+                        $(".tanggal").val(data.tanggal)
+
+                    }
+                })
+            }
+
+
+            $('#submit_editGambar').on('click', function(e) {
+                e.preventDefault();
+                let form_data = new FormData($('#edit_form_gambar')[0]);
+                $.ajax({
+                    url: "http://localhost:8000/gambar/",
+                    type: "PUT",
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    success: function(results) {
+                        if (results.code != 200) {
+                            error(results.message);
+                        } else {
+                            success(results.message);
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        }
+                    },
+                });
+            })
 
 
 

@@ -258,4 +258,41 @@
             </div>
         </div>
 
+        <!-- Modal Gambar -->
+        <div class="modal fade" id="gambarModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="gambarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="gambarModalLabel">Tambah gambar</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="" method="POST" enctype="multipart/form-data" id="form_gambar">
+                                    <input type="hidden" class="wisata_id" name="id_pariwisata">
+                                    <input type="hidden" name="tanggal" class="tanggal">
+                                    <div>
+                                        <div class="custom-file">
+                                            <div class="row">
+                                                <label class="custom-file-label" for="gambar">Gambar</label>
+                                                <input type="file" class="custom-file-input" id="gambar" name="gambar" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <label for="keterangan">Keterangan</label>
+                                        <textarea class="form-control keterangan" name="keterangan" id="keterangan" rows="4"></textarea>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" id="submit_addGambar" class="btn btn-primary">Tambah</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <script src="<?= base_url() ?>js/penginapan.js"></script>

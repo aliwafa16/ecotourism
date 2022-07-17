@@ -488,6 +488,42 @@ function edit_kuliner(id_kuliner) {
 	location.href = base_url + "kuliner/edit";
 }
 
+function gambar_kuliner(id_kuliner) {
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, "0");
+	var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = yyyy + "/" + mm + "/" + dd;
+
+	$("#gambarModal").modal("show");
+	$("#form_gambar")[0].reset();
+	$(".tanggal").val(today);
+	$(".kuliner_id").val(id_kuliner);
+}
+
+$("#submit_addGambar").on("click", function (e) {
+	e.preventDefault();
+	let formdata = new FormData($("#form_gambar")[0]);
+	$.ajax({
+		url: "http://localhost:8000/gambar/",
+		type: "POST",
+		data: formdata,
+		contentType: false,
+		processData: false,
+		success: function (results) {
+			if (results.code != 200) {
+				error(results.message);
+			} else {
+				success(results.message);
+				setTimeout(function () {
+					location.reload();
+				}, 2000);
+			}
+		},
+	});
+});
+
 function deskripsi(deskripsi) {
 	$("#deskripsiModal").modal("show");
 	$("#deskripsi").text("");
