@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	console.log(API);
 	var table = $("#table_kategori_kuliner");
 	grid_kategori_kuliner = table.DataTable({
 		// scrollX: true,
@@ -14,7 +15,7 @@ $(document).ready(function () {
 
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/kategori_kuliner",
+			url: API + "kategori_kuliner",
 			data: function (d) {
 				no = 0;
 			},
@@ -72,7 +73,7 @@ $("#btn_submitKategori").on("click", function (e) {
 		method = "PUT";
 	}
 	$.ajax({
-		url: "http://localhost:8000/kategori_kuliner",
+		url: API + "kategori_kuliner",
 		type: method,
 		dataType: "JSON",
 		data,
@@ -97,7 +98,7 @@ function edit(id) {
 	tipe = "ubah";
 
 	$.ajax({
-		url: "http://localhost:8000/kategori_kuliner/" + id,
+		url: API + "kategori_kuliner/" + id,
 		type: "GET",
 		dataType: "JSON",
 		success: function (result) {
@@ -120,7 +121,7 @@ function hapus(id) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/kategori_kuliner/",
+				url: API + "kategori_kuliner/",
 				type: "DELETE",
 				data: {
 					id_kategori_kuliner: id,

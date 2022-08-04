@@ -18,6 +18,7 @@
 
 <script>
     const base_url = `<?= base_url() ?>`
+    const API = `http://localhost:8000/`;
 </script>
 
 <body class="img js-fullheight" style="background-image: url(<?= base_url('assets/auth/') ?>images/a.jpg);">
@@ -119,7 +120,7 @@
                 password: $('#password').val()
             }
             $.ajax({
-                url: 'http://localhost:8000/auth/reset_password',
+                url: API + 'auth/reset_password',
                 type: "POST",
                 data,
                 dataType: 'JSON',

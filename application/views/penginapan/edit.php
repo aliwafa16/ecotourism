@@ -176,7 +176,7 @@
                 if (localStorage.getItem("id_penginapan") != null) {
                     const id_penginapan = localStorage.getItem("id_penginapan")
                     $.ajax({
-                        url: "http://localhost:8000/penginapan/" + id_penginapan,
+                        url: API + "penginapan/" + id_penginapan,
                         type: "GET",
                         success: function(result) {
                             if (result.code != 200) {
@@ -224,7 +224,7 @@
                                 $("#status").val(penginapan.status);
 
                                 $.ajax({
-                                    url: "http://localhost:8000/kategori_penginapan",
+                                    url: API + "kategori_penginapan",
                                     type: "GET",
                                     dataType: "JSON",
                                     success: function(result) {
@@ -245,7 +245,7 @@
                                 });
 
                                 $.ajax({
-                                    url: "http://localhost:8000/pengguna/filter?role_id=2&status=1",
+                                    url: API + "pengguna/filter?role_id=2&status=1",
                                     type: "GET",
                                     dataType: "JSON",
                                     success: function(result) {

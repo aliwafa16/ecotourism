@@ -44,6 +44,7 @@
         const base_url = `<?= base_url(); ?>`
         const role_id = `<?= $this->session->userdata('role_id'); ?>`
         const id_pariwisata = `<?= $this->session->userdata('id_wisata'); ?>`
+        const API = `http://localhost:8000/`;
     </script>
 
     <!-- ============================================================== -->

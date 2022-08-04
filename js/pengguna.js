@@ -15,7 +15,7 @@ function semua_pengguna() {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?status=1",
+			url: API + "pengguna/filter?status=1",
 			data: function (d) {
 				no = 0;
 			},
@@ -69,7 +69,7 @@ function pengelola_wisata() {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?role_id=2&status=1",
+			url: API + "pengguna/filter?role_id=2&status=1",
 			data: function (d) {
 				no_pengelola = 0;
 			},
@@ -123,7 +123,7 @@ function wisatawan() {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/pengguna/filter?role_id=3&status=1",
+			url: API + "pengguna/filter?role_id=3&status=1",
 			data: function (d) {
 				no_wisatawan = 0;
 			},
@@ -203,7 +203,7 @@ $("#btn_password").on("click", function () {
 
 function ubah_sandi() {
 	$.ajax({
-		url: "http://localhost:8000/pengguna/password",
+		url: API + "pengguna/password",
 		type: "PUT",
 		data: {
 			password: $("#ubahpassword").val(),
@@ -274,7 +274,7 @@ $("#btn_submitPengguna").on("click", function (e) {
 
 function submit() {
 	$.ajax({
-		url: "http://localhost:8000/pengguna/",
+		url: API + "pengguna/",
 		type: "POST",
 		data: {
 			role_id: $("#role_id").val(),
@@ -301,7 +301,7 @@ function edit(id_pengguna) {
 	$("#editModal").modal("show");
 	$("#form_editpengguna")[0].reset();
 	$.ajax({
-		url: "http://localhost:8000/pengguna/" + id_pengguna,
+		url: API + "pengguna/" + id_pengguna,
 		type: "GET",
 		dataType: "JSON",
 		success: function (results) {
@@ -342,7 +342,7 @@ $("#btn_submiteditPengguna").on("click", function (e) {
 
 function submit_edit() {
 	$.ajax({
-		url: "http://localhost:8000/pengguna/",
+		url: API + "pengguna/",
 		type: "PUT",
 		data: {
 			id_pengguna: $("#id_pengguna").val(),
@@ -380,7 +380,7 @@ function hapus(id_pengguna) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/pengguna/",
+				url: API + "pengguna/",
 				type: "DELETE",
 				data: {
 					id_pengguna,

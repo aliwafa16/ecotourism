@@ -7,7 +7,7 @@ $(document).ready(function () {
 		processing: true,
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/role/",
+			url: API + "role/",
 			data: function (d) {
 				no = 0;
 			},
@@ -41,7 +41,7 @@ $(document).ready(function () {
 function edit(param) {
 	$("#roleModal").modal("show");
 	$.ajax({
-		url: "http://localhost:8000/role/" + param,
+		url: API + "role/" + param,
 		type: "GET",
 		dataType: "JSON",
 		success: function (results) {
@@ -54,7 +54,7 @@ function edit(param) {
 $("#btn_submitRole").on("click", function (e) {
 	e.preventDefault();
 	$.ajax({
-		url: "http://localhost:8000/role/",
+		url: API + "role/",
 		type: "PUT",
 		dataType: "JSON",
 		data: {

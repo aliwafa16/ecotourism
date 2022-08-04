@@ -59,8 +59,6 @@
                                 <img src="<?= base_url('assets/backend') ?>/assets/images/users/profile.png" alt="user" class="rounded-circle" width="31">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    Profil</a>
                                 <a class="dropdown-item" href="<?= base_url('Auth/logout') ?>">
                                     Logout</a>
                             </ul>

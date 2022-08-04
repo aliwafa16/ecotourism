@@ -13,7 +13,7 @@ $(document).ready(function () {
 		],
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/kuliner",
+			url: API + "kuliner",
 			data: function (d) {
 				no = 0;
 			},
@@ -91,7 +91,6 @@ $(document).ready(function () {
 	});
 });
 
-
 function item_kuliner(id_kuliner) {
 	$("#itemModal").modal("show");
 	$("#form_item")[0].reset();
@@ -104,7 +103,7 @@ $("#submit_addItem").on("click", function (e) {
 	let id = $(".kuliner_id").val();
 	console.log(id);
 	$.ajax({
-		url: "http://localhost:8000/item/" + id,
+		url: API + "item/" + id,
 		type: "POST",
 		data: formdata,
 		contentType: false,
@@ -139,7 +138,7 @@ $("#submit_addJadwal").on("click", function (e) {
 	};
 
 	$.ajax({
-		url: "http://localhost:8000/jadwal",
+		url: API + "jadwal",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -231,7 +230,7 @@ $("#submit_addMenu").on("click", function (e) {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/menu_kuliner",
+		url: API + "menu_kuliner",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -262,7 +261,7 @@ $("#submit_addFasilitas").on("click", function (e) {
 		keterangan: $("#keterangan_fasilitas").val(),
 	};
 	$.ajax({
-		url: "http://localhost:8000/fasilitas",
+		url: API + "fasilitas",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -316,7 +315,7 @@ function submitIsClick() {
 	data.status = role_id == 1 ? 1 : 0;
 
 	$.ajax({
-		url: "http://localhost:8000/kuliner/",
+		url: API + "kuliner/",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -429,7 +428,7 @@ function editIsClick() {
 	data.id_kuliner = $("#id_kuliner").val();
 
 	$.ajax({
-		url: "http://localhost:8000/kuliner/",
+		url: API + "kuliner/",
 		data: data,
 		type: "PUT",
 		dataType: "JSON",
@@ -459,7 +458,7 @@ function hapus_kuliner(id_kuliner) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/kuliner/",
+				url: API + "kuliner/",
 				type: "DELETE",
 				data: {
 					id_kuliner,
@@ -506,7 +505,7 @@ $("#submit_addGambar").on("click", function (e) {
 	e.preventDefault();
 	let formdata = new FormData($("#form_gambar")[0]);
 	$.ajax({
-		url: "http://localhost:8000/gambar/",
+		url: API + "gambar/",
 		type: "POST",
 		data: formdata,
 		contentType: false,

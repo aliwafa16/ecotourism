@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/kategori_penginapan",
+			url: API + "kategori_penginapan",
 			data: function (d) {
 				no = 0;
 			},
@@ -72,7 +72,7 @@ $("#btn_submitKategori").on("click", function (e) {
 		method = "PUT";
 	}
 	$.ajax({
-		url: "http://localhost:8000/kategori_penginapan",
+		url: API + "kategori_penginapan",
 		type: method,
 		dataType: "JSON",
 		data,
@@ -96,7 +96,7 @@ function edit(id) {
 	$("#btn_submitKategori").text("Ubah");
 	tipe = "ubah";
 	$.ajax({
-		url: "http://localhost:8000/kategori_penginapan/" + id,
+		url: API + "kategori_penginapan/" + id,
 		type: "GET",
 		dataType: "JSON",
 		success: function (result) {
@@ -119,7 +119,7 @@ function hapus(id) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/kategori_penginapan/",
+				url: API + "kategori_penginapan/",
 				type: "DELETE",
 				data: {
 					id_kategori_penginapan: id,

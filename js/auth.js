@@ -1,74 +1,76 @@
-$('#btn_login').on('click', function () {
-    $('#form_login').validate({
-        rules: {
-            email: 'required',
-            password:'required'
-        },
-        messages: {
-            email: {
-                required : 'Email harus diisi !'
-            },
-            password: {
-                required : 'Kata sandi harus diisi !'
-            }
-        },
-        submitHandler: function (forms) {
-            submitIsClick(forms);
-        }
-    })
-})
+$(document).ready(function () {
+	console.log(API);
+});
 
+$("#btn_login").on("click", function () {
+	$("#form_login").validate({
+		rules: {
+			email: "required",
+			password: "required",
+		},
+		messages: {
+			email: {
+				required: "Email harus diisi !",
+			},
+			password: {
+				required: "Kata sandi harus diisi !",
+			},
+		},
+		submitHandler: function (forms) {
+			submitIsClick(forms);
+		},
+	});
+});
 
-$('#btn_registrasi').on('click', function () {
-    $('#form_registasi').validate({
-        rules: {
-            email: {
-                required: true,
-                email:true
-            },
-            password: {
-                required: true,
-                minlength : 5,
-            },
-            no_telp:{
-                required:true,
-                minlength:12
-            },
-            username: 'required',
-            re_password: {
-                required: true,
-                minlength: 5,
-                equalTo : '#password'
-            }
-        },
-        messages: {
-            email: {
-                required: 'Email harus diisi !',
-                email : 'Format email salah !'
-            },
-            password: {
-                required: 'Kata sandi harus diisi !',
-                minlength : 'Kata sandi minimal 5 karakter'
-            },
-            username: {
-                required: 'Username harus diisi !'
-            },
-            no_telp:{
-                required: 'Nomor telepon harus diisi !',
-                minlength:'Nomor telepon minimal 12 angka'
-            },
-            re_password: {
-                required: 'Konfirmasi kata sandi harus diisi !',
-                minlength: 'Kata sandi minimal 5 karakter',
-                equalTo : 'Konfirmasi kata sandi salah !'
-            }
-        },
-        submitHandler: function (forms) {
-            submitRegistrationIsClick(forms)
-        }
-    })
-})
-
+$("#btn_registrasi").on("click", function () {
+	$("#form_registasi").validate({
+		rules: {
+			email: {
+				required: true,
+				email: true,
+			},
+			password: {
+				required: true,
+				minlength: 5,
+			},
+			no_telp: {
+				required: true,
+				minlength: 12,
+			},
+			username: "required",
+			re_password: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password",
+			},
+		},
+		messages: {
+			email: {
+				required: "Email harus diisi !",
+				email: "Format email salah !",
+			},
+			password: {
+				required: "Kata sandi harus diisi !",
+				minlength: "Kata sandi minimal 5 karakter",
+			},
+			username: {
+				required: "Username harus diisi !",
+			},
+			no_telp: {
+				required: "Nomor telepon harus diisi !",
+				minlength: "Nomor telepon minimal 12 angka",
+			},
+			re_password: {
+				required: "Konfirmasi kata sandi harus diisi !",
+				minlength: "Kata sandi minimal 5 karakter",
+				equalTo: "Konfirmasi kata sandi salah !",
+			},
+		},
+		submitHandler: function (forms) {
+			submitRegistrationIsClick(forms);
+		},
+	});
+});
 
 function submitRegistrationIsClick(forms) {
 	let data = {
@@ -82,11 +84,12 @@ function submitRegistrationIsClick(forms) {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/auth/registration",
+		url: API + "auth/registration",
 		type: "POST",
 		dataType: "JSON",
 		data: data,
 		success: function (results) {
+			console.log(results)
 			if (results.code !== 200) {
 				error(results.message);
 			} else {
@@ -106,7 +109,7 @@ function submitIsClick(forms) {
 	};
 	// console.log(data)
 	$.ajax({
-		url: "http://localhost:8000/auth",
+		url: API + "auth",
 		type: "POST",
 		dataType: "JSON",
 		data: data,
@@ -119,9 +122,7 @@ function submitIsClick(forms) {
 
 				if (datas.role_id == 2) {
 					$.ajax({
-						url:
-							"http://localhost:8000/pariwisata/search?pengguna_id=" +
-							datas.id_pengguna,
+						url: API + "pariwisata/search?pengguna_id=" + datas.id_pengguna,
 						type: "GET",
 						success: function (pariwisata) {
 							let kategori = pariwisata.data[0];
@@ -144,7 +145,7 @@ function submitIsClick(forms) {
 
 				// if (datas.role_id == 2) {
 				//     $.ajax({
-				//         url: 'http://localhost:8000/pariwisata/search?pengguna_id=' + datas.id_pengguna,
+				//         url: API+'pariwisata/search?pengguna_id=' + datas.id_pengguna,
 				//         type: 'GET',
 				//         success: function (wisata) {
 				//             datas.wisata = wisata.data[0]
@@ -163,23 +164,18 @@ $("#btn_cekEmail").on("click", function () {
 	$(".error-email").html("");
 	$(".success-email").html("");
 	$.ajax({
-		url: "http://localhost:8000/auth/cekEmail",
+		url: API + "auth/cekEmail",
 		data: {
 			email: $("#email").val(),
 		},
 		type: "POST",
 		dataType: "JSON",
 		success: function (results) {
+			console.log(results);
 			if (results.code != 200) {
-				$(".error-email").html(
-					`Email sudah digunakan. Lupa password ?<a href="${base_url}" style="color:white"> Klik disini</a>`
-				);
-				$(".success-email").html("");
+				error(results.message);
 			} else {
-				$(".success-email").html(
-					`<p style="color:white">Email bisa digunakan</p>`
-				);
-				$(".error-email").html("");
+				success(results.message);
 			}
 		},
 	});
@@ -207,7 +203,7 @@ $("#btn_sendEmail").on("click", function () {
 
 function submitSendEmailIsClick() {
 	$.ajax({
-		url: "http://localhost:8000/auth/lupa_password",
+		url: API + "auth/lupa_password",
 		type: "POST",
 		data: {
 			email: $("#email").val(),
@@ -267,10 +263,10 @@ function success_registration(title = null, text = null, type = null) {
 }
 
 function success(params) {
-    Swal.fire({
-        icon: 'success',
-        title: ''+params,
-        showConfirmButton: false,
-        timer: 1500,
-    })
+	Swal.fire({
+		icon: "success",
+		title: "" + params,
+		showConfirmButton: false,
+		timer: 1500,
+	});
 }

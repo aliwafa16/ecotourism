@@ -313,7 +313,7 @@
         <script>
             $(document).ready(function() {
                 $.ajax({
-                    url: "http://localhost:8000/kategori_wisata",
+                    url: API + "kategori_wisata",
                     type: "GET",
                     dataType: "JSON",
                     success: function(result) {
@@ -328,7 +328,7 @@
 
 
                 $.ajax({
-                    url: "http://localhost:8000/pengguna/filter?role_id=2&status=1",
+                    url: API + "pengguna/filter?role_id=2&status=1",
                     type: "GET",
                     dataType: "JSON",
                     success: function(result) {

@@ -317,7 +317,7 @@
                 if (localStorage.getItem("id_wisata") != null) {
                     const id_wisata = localStorage.getItem("id_wisata")
                     $.ajax({
-                        url: "http://localhost:8000/wisata/" + id_wisata,
+                        url: API + "wisata/" + id_wisata,
                         type: "GET",
                         success: function(result) {
                             if (result.code != 200) {
@@ -364,7 +364,7 @@
                                 $("#status").val(wisata.status);
 
                                 $.ajax({
-                                    url: "http://localhost:8000/kategori_wisata",
+                                    url: API + "kategori_wisata",
                                     type: "GET",
                                     dataType: "JSON",
                                     success: function(result) {
@@ -385,7 +385,7 @@
                                 });
 
                                 $.ajax({
-                                    url: "http://localhost:8000/pengguna/filter?role_id=2&status=1",
+                                    url: API + "pengguna/filter?role_id=2&status=1",
                                     type: "GET",
                                     dataType: "JSON",
                                     success: function(result) {

@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/wisata/filter?status=1",
+			url: API + "wisata/filter?status=1",
 			data: function (d) {
 				no = 0;
 			},
@@ -121,7 +121,7 @@ $("#submit_addItem").on("click", function (e) {
 	let id = $(".wisata_id").val();
 	console.log(id);
 	$.ajax({
-		url: "http://localhost:8000/item/" + id,
+		url: API + "item/" + id,
 		type: "POST",
 		data: formdata,
 		contentType: false,
@@ -150,7 +150,7 @@ $("#submit_addJadwal").on("click", function (e) {
 	};
 
 	$.ajax({
-		url: "http://localhost:8000/jadwal",
+		url: API + "jadwal",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -181,7 +181,7 @@ $("#submit_addFasilitas").on("click", function (e) {
 		keterangan: $("#keterangan_fasilitas").val(),
 	};
 	$.ajax({
-		url: "http://localhost:8000/fasilitas",
+		url: API + "fasilitas",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -214,7 +214,7 @@ $("#submit_addTiket").on("click", function (e) {
 	};
 
 	$.ajax({
-		url: "http://localhost:8000/tiket",
+		url: API + "tiket",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -382,7 +382,7 @@ function submitIsClick() {
 
 	data.status = role_id == 1 ? 1 : 0;
 	$.ajax({
-		url: "http://localhost:8000/wisata/",
+		url: API + "wisata/",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -437,7 +437,7 @@ function editIsClick() {
 	data.status = $("#status").val();
 	data.id_wisata = $("#id_wisata").val();
 	$.ajax({
-		url: "http://localhost:8000/wisata/",
+		url: API + "wisata/",
 		data: data,
 		type: "PUT",
 		dataType: "JSON",
@@ -454,7 +454,6 @@ function editIsClick() {
 	});
 }
 
-
 function hapus_wisata(id_wisata) {
 	Swal.fire({
 		title: "Yakin ingin menghapus data wisata ?",
@@ -468,7 +467,7 @@ function hapus_wisata(id_wisata) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/wisata/",
+				url: API + "wisata/",
 				type: "DELETE",
 				data: {
 					id_wisata,
@@ -486,7 +485,6 @@ function hapus_wisata(id_wisata) {
 		}
 	});
 }
-
 
 function gambar_wisata(id_wisata) {
 	var today = new Date();
@@ -506,7 +504,7 @@ $("#submit_addGambar").on("click", function (e) {
 	e.preventDefault();
 	let formdata = new FormData($("#form_gambar")[0]);
 	$.ajax({
-		url: "http://localhost:8000/gambar/",
+		url: API + "gambar/",
 		type: "POST",
 		data: formdata,
 		contentType: false,

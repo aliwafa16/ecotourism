@@ -13,7 +13,7 @@ $(document).ready(function () {
 		],
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/penginapan",
+			url: API+"penginapan",
 			data: function (d) {
 				no = 0;
 			},
@@ -107,7 +107,7 @@ $("#submit_addItem").on("click", function (e) {
 	let id = $(".penginapan_id").val();
 	console.log(id);
 	$.ajax({
-		url: "http://localhost:8000/item/" + id,
+		url: API+"item/" + id,
 		type: "POST",
 		data: formdata,
 		contentType: false,
@@ -226,7 +226,7 @@ function editIsClick() {
 	data.id_penginapan = $("#id_penginapan").val();
 
 	$.ajax({
-		url: "http://localhost:8000/penginapan/",
+		url: API+"penginapan/",
 		data: data,
 		type: "PUT",
 		dataType: "JSON",
@@ -267,7 +267,7 @@ function hapus_penginapan(id_penginapan) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/penginapan/",
+				url: API+"penginapan/",
 				type: "DELETE",
 				data: {
 					id_penginapan,
@@ -382,7 +382,7 @@ function submitIsClick() {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/penginapan/",
+		url: API+"penginapan/",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -418,7 +418,7 @@ $("#submit_addKamarPenginapan").on("click", function (e) {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/jenis_kamar",
+		url: API+"jenis_kamar",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -449,7 +449,7 @@ $("#submit_addFasilitas").on("click", function (e) {
 		keterangan: $("#keterangan_fasilitas").val(),
 	};
 	$.ajax({
-		url: "http://localhost:8000/fasilitas",
+		url: API+"fasilitas",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -477,7 +477,7 @@ function fasilitas_kamar_penginapan(id_penginapan) {
 	$("#tipe_kamar_id").html("");
 	$.ajax({
 		url:
-			"http://localhost:8000/jenis_kamar/find?penginapan_id=" + id_penginapan,
+			API+"jenis_kamar/find?penginapan_id=" + id_penginapan,
 		type: "GET",
 		data: data,
 		dataType: "JSON",
@@ -502,7 +502,7 @@ $("#submit_addFasilitasKamar").on("click", function (e) {
 	};
 
 	$.ajax({
-		url: "http://localhost:8000/fasilitas_kamar",
+		url: API+"fasilitas_kamar",
 		type: "POST",
 		data,
 		dataType: "JSON",
@@ -537,7 +537,7 @@ $("#submit_addGambar").on("click", function (e) {
 	e.preventDefault();
 	let formdata = new FormData($("#form_gambar")[0]);
 	$.ajax({
-		url: "http://localhost:8000/gambar/",
+		url: API+"gambar/",
 		type: "POST",
 		data: formdata,
 		contentType: false,

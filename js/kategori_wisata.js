@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/kategori_wisata",
+			url: API + "kategori_wisata",
 			data: function (d) {
 				no = 0;
 			},
@@ -72,7 +72,7 @@ $("#btn_submitKategori").on("click", function (e) {
 		method = "PUT";
 	}
 	$.ajax({
-		url: "http://localhost:8000/kategori_wisata",
+		url: API + "kategori_wisata",
 		type: method,
 		dataType: "JSON",
 		data,
@@ -97,7 +97,7 @@ function edit(id) {
 	tipe = "ubah";
 
 	$.ajax({
-		url: "http://localhost:8000/kategori_wisata/" + id,
+		url: API + "kategori_wisata/" + id,
 		type: "GET",
 		dataType: "JSON",
 		success: function (result) {
@@ -120,7 +120,7 @@ function hapus(id) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/kategori_wisata/",
+				url: API + "kategori_wisata/",
 				type: "DELETE",
 				data: {
 					id_kategori_wisata: id,

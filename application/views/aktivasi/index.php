@@ -18,6 +18,7 @@
 
 <script>
     const base_url = `<?= base_url() ?>`
+    const API = `http://localhost:8000/`;
 </script>
 
 <body class="img js-fullheight" style="background-image: url(<?= base_url('assets/auth/') ?>images/a.jpg);">
@@ -59,7 +60,7 @@
                 location.href = base_url;
             } else {
                 $.ajax({
-                    url: 'http://localhost:8000/auth/verifikasi',
+                    url: API + 'auth/verifikasi',
                     data: {
                         token
                     },

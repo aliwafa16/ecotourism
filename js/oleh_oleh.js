@@ -13,7 +13,7 @@ $(document).ready(function () {
 		],
 		ajax: {
 			type: "GET",
-			url: "http://localhost:8000/oleh_oleh",
+			url: API + "oleh_oleh",
 			data: function (d) {
 				no = 0;
 			},
@@ -106,7 +106,7 @@ $("#submit_addItem").on("click", function (e) {
 	let id = $(".oleh_oleh_id").val();
 	console.log(id);
 	$.ajax({
-		url: "http://localhost:8000/item/" + id,
+		url: API + "item/" + id,
 		type: "POST",
 		data: formdata,
 		contentType: false,
@@ -224,7 +224,7 @@ function submitIsClick() {
 
 	console.log(data);
 	$.ajax({
-		url: "http://localhost:8000/oleh_oleh/",
+		url: API + "oleh_oleh/",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -348,7 +348,7 @@ function editIsClick() {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/oleh_oleh/",
+		url: API + "oleh_oleh/",
 		data: data,
 		type: "PUT",
 		dataType: "JSON",
@@ -378,7 +378,7 @@ function hapus_oleh_oleh(id_oleh_oleh) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "http://localhost:8000/oleh_oleh/",
+				url: API + "oleh_oleh/",
 				type: "DELETE",
 				data: {
 					id_oleh_oleh,
@@ -411,7 +411,7 @@ $("#submit_addFasilitas").on("click", function (e) {
 		keterangan: $("#keterangan_fasilitas").val(),
 	};
 	$.ajax({
-		url: "http://localhost:8000/fasilitas",
+		url: API + "fasilitas",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -445,7 +445,7 @@ $("#submit_addJadwal").on("click", function (e) {
 	};
 
 	$.ajax({
-		url: "http://localhost:8000/jadwal",
+		url: API + "jadwal",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -480,7 +480,7 @@ $("#submit_addMenu").on("click", function (e) {
 	console.log(data);
 
 	$.ajax({
-		url: "http://localhost:8000/item_oleh_oleh",
+		url: API + "item_oleh_oleh",
 		data: data,
 		type: "POST",
 		dataType: "JSON",
@@ -515,7 +515,7 @@ $("#submit_addGambar").on("click", function (e) {
 	e.preventDefault();
 	let formdata = new FormData($("#form_gambar")[0]);
 	$.ajax({
-		url: "http://localhost:8000/gambar/",
+		url: API + "gambar/",
 		type: "POST",
 		data: formdata,
 		contentType: false,

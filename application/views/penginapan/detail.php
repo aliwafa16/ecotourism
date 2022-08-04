@@ -709,7 +709,7 @@
                     const id_penginapan = localStorage.getItem("id_penginapan")
 
                     $.ajax({
-                        url: 'http://localhost:8000/penginapan/' + id_penginapan,
+                        url: API + 'penginapan/' + id_penginapan,
                         type: 'GET',
                         dataType: 'JSON',
                         success: function(results) {
@@ -954,7 +954,7 @@
                                 $('.gambar_grid').append(`
                                 <div class="col-md-4">
                                 <div class="card">
-                                    <img src="http://localhost:8000/${element.gambar}" class="card-img-top" alt="...">
+                                    <img src="${API + element.gambar}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <p class="card-text">${element.keterangan != null ?element.keterangan : '-' }</p>
                                         <button class="btn btn-sm btn-info" type="button" onclick="edit_gambar(${element.id_gambar})"><i class="fas fa-edit text-light"></i></button>
@@ -977,7 +977,7 @@
             function edit_jadwal(id_jadwal) {
                 $('#editJadwalModal').modal('show');
                 $.ajax({
-                    url: 'http://localhost:8000/jadwal/' + id_jadwal,
+                    url: API + 'jadwal/' + id_jadwal,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(results) {
@@ -1003,7 +1003,7 @@
                     keterangan: $("#edit_keterangan_jadwal").val(),
                 }
                 $.ajax({
-                    url: 'http://localhost:8000/jadwal',
+                    url: API + 'jadwal',
                     type: 'PUT',
                     dataType: 'JSON',
                     data: data,
@@ -1033,7 +1033,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/jadwal/",
+                            url: API + "jadwal/",
                             type: "DELETE",
                             data: {
                                 id_jadwal,
@@ -1058,7 +1058,7 @@
                 console.log(id_kamar_penginapan)
                 $('#editKamarPenginapanModal').modal('show');
                 $.ajax({
-                    url: 'http://localhost:8000/jenis_kamar/' + id_kamar_penginapan,
+                    url: API + 'jenis_kamar/' + id_kamar_penginapan,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(results) {
@@ -1086,7 +1086,7 @@
                 console.log(data)
 
                 $.ajax({
-                    url: "http://localhost:8000/jenis_kamar",
+                    url: API + "jenis_kamar",
                     data: data,
                     type: "PUT",
                     dataType: "JSON",
@@ -1117,7 +1117,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/jenis_kamar/",
+                            url: API + "jenis_kamar/",
                             type: "DELETE",
                             data: {
                                 id_kamar_penginapan,
@@ -1142,7 +1142,7 @@
             function edit_fasilitas(id_fasilitas) {
                 $('#editFasilitasModal').modal('show');
                 $.ajax({
-                    url: 'http://localhost:8000/fasilitas/' + id_fasilitas,
+                    url: API + 'fasilitas/' + id_fasilitas,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(results) {
@@ -1164,7 +1164,7 @@
                     keterangan: $("#edit_keterangan_fasilitas").val(),
                 };
                 $.ajax({
-                    url: "http://localhost:8000/fasilitas",
+                    url: API + "fasilitas",
                     data: data,
                     type: "PUT",
                     dataType: "JSON",
@@ -1194,7 +1194,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/fasilitas/",
+                            url: API + "fasilitas/",
                             type: "DELETE",
                             data: {
                                 id_fasilitas,
@@ -1229,7 +1229,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/item/",
+                            url: API + "item/",
                             type: "DELETE",
                             data: {
                                 id_item_pariwisata,
@@ -1264,7 +1264,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "http://localhost:8000/gambar/",
+                            url: API + "gambar/",
                             type: "DELETE",
                             data: {
                                 id_gambar,
@@ -1288,12 +1288,12 @@
             function edit_gambar(id_gambar) {
                 $('#editgambarModal').modal('show');
                 $.ajax({
-                    url: 'http://localhost:8000/gambar/' + id_gambar,
+                    url: API + 'gambar/' + id_gambar,
                     type: 'GET',
                     dataType: 'JSON',
                     success: function(results) {
                         let data = results.data;
-                        $("#edit_form_gambar img").attr('src', `http://localhost:8000/${data.gambar}`)
+                        $("#edit_form_gambar img").attr('src', API + `${data.gambar}`)
                         $("#edit_keterangan").val(data.keterangan)
                         $(".wisata_id").val(data.id_pariwisata)
                         $("#id_gambar").val(data.id_gambar)
@@ -1308,7 +1308,7 @@
                 e.preventDefault();
                 let form_data = new FormData($('#edit_form_gambar')[0]);
                 $.ajax({
-                    url: "http://localhost:8000/gambar/",
+                    url: API + "gambar/",
                     type: "PUT",
                     data: form_data,
                     contentType: false,

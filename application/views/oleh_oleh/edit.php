@@ -171,7 +171,7 @@
                 if (localStorage.getItem("id_oleh_oleh") != null) {
                     const id_oleh_oleh = localStorage.getItem("id_oleh_oleh")
                     $.ajax({
-                        url: "http://localhost:8000/oleh_oleh/" + id_oleh_oleh,
+                        url: API + "oleh_oleh/" + id_oleh_oleh,
                         type: "GET",
                         success: function(result) {
                             if (result.code != 200) {
@@ -219,7 +219,7 @@
                                 $("#status").val(oleh_oleh.status);
 
                                 // $.ajax({
-                                //     url: "http://localhost:8000/kategori_kuliner",
+                                //     url: API+"kategori_kuliner",
                                 //     type: "GET",
                                 //     dataType: "JSON",
                                 //     success: function(result) {
@@ -240,7 +240,7 @@
                                 // });
 
                                 $.ajax({
-                                    url: "http://localhost:8000/pengguna/filter?role_id=2&status=1",
+                                    url: API + "pengguna/filter?role_id=2&status=1",
                                     type: "GET",
                                     dataType: "JSON",
                                     success: function(result) {
